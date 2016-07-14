@@ -1,9 +1,11 @@
-require('dotenv').load();
 
-var mongoose = require('mongoose');
+require('dotenv').load();
+var mongoose = require('./database');
+
 var Admin = require('../models/admin');
 
-var admins = {name: 'Testing Admins'};
+var admins = [{admin: 'Testing Admin',
+              email: 'carlos@email.com'}];
 
 Admin.remove({}, function (err) {
   if (err) console.log(err);
