@@ -1,5 +1,24 @@
 var express = require ('express');
 var router = express.Router();
+var adminsController = require ('../controllers/admins');
+
+/* API Routes */
+router.route('/api/admins')
+  .get(adminsController.index)
+  .post(adminsController.create)
+
+router.route('/api/admins/:id')
+  .get(adminsController.show)
+  .put(adminsController.update)
+  .delete(adminsController.destroy)
+
+/* GET homepage */
+router.get('/', function(req, res, next) {
+  res.sendfile('public/index.html');
+});
+router.get('*', function (req, res, next) {
+  res.redirect('/');
+});
 
 
 module.exports = router;

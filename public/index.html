@@ -1,0 +1,59 @@
+<html ng-app='landscaping'>
+  <head>
+    <meta charset='utf-8'>
+    <title>S & P Hanson Landscaping</title>
+    <!-- Loading Style -->
+    <link rel='stylesheet' href='stylesheets/style.css'>
+
+    <!-- Loading Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <! -- loading Materialize Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class='nav-wrapper'>
+          <div class='brand-logo'>
+            <div id='logo'>S & P Hanson Landscaping
+            Professional Landscape Services</div>
+          </div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a ui-sref='home'>Home</a></li>
+            <li><a ui-sref='About'>About</a></li>
+            <li><a ui-sref='Work'>Our Work</a></li>
+            <li><a ui-sref='Service'>Service</a></li>
+            <li><a ui-sref='Contact'>Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div ui-view></div>
+
+        <!-- Loading Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- Loading Angular ui-router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+
+    <!-- Loading jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <!-- Loading Materialize Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.9/angular-materialize.min.js"></script>
+
+
+    <!-- Loading local files -->
+
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/config/routes.js" charset="utf-8"></script>
+    <script src="js/mainController.js" charset="utf-8"></script>
+    <script src="js/materialize.js" charset="utf-8"></script>
+
+  </body>
+</html>

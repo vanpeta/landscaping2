@@ -1,8 +1,9 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.about-content-container {
+  height: 400px;
 }
-
-a {
-  color: #00B7FF;
+.about-content {
+  height: 300px;
+}
+#logo {
+  font-size: 20px;
 }

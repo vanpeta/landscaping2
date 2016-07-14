@@ -4,7 +4,7 @@ var mongoose = require('./database');
 
 var Admin = require('../models/admin');
 
-var admins = [{admin: 'Testing Admin',
+var admins = [{admin_name: 'Testing Admin',
               email: 'carlos@email.com'}];
 
 Admin.remove({}, function (err) {
