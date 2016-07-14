@@ -1,10 +1,12 @@
 require('dotenv').load();
+
 var mongoose = require('mongoose');
 var Admin = require('../models/admin');
 
 var admins = {name: 'Testing Admins'};
 
 Admin.remove({}, function(err){
+  console.log('removing db content')
   if (err) console.log(err);
   Admin.create(admins, function(err, admins) {
     if (err) {
