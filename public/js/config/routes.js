@@ -21,7 +21,7 @@
     .state ('Work', {
       url: '/Work',
       templateUrl: 'js/work/work.html',
-      controller: 'mainController',
+      controller: 'workController',
       controllerAs: 'vm'
     })
     .state ('Service', {
