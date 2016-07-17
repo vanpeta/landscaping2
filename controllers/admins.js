@@ -1,4 +1,5 @@
 var Admin = require('../models/admin');
+require('dotenv').load();
 
 module.exports = {
   index: index,
@@ -6,6 +7,7 @@ module.exports = {
   create: create,
   update: update,
   destroy: destroy,
+  imgurKey: imgurKey
   // me: me
 }
 
@@ -82,3 +84,11 @@ function destroy (req,res,next) {
     res.json({message: "Admin deleted"});
   });
 };
+
+function imgurKey (req, res, next) {
+  res.json(process.env.IMGUR_Client_ID)
+};
+
+
+
+

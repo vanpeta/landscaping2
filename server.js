@@ -5,16 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./config/routes');
-
-
 var app = express();
 
-//load env var
-require('dotenv').load();
+var routes = require('./config/routes');
 
 // connect to MongoFB with mongoose
 require('./config/database');
+
+//load env var
+require('dotenv').load();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

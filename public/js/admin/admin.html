@@ -1,0 +1,12 @@
+<h1>admin</h1>
+
+<div>
+  <p>Upload a new image for the "Our Work" page</p>
+  <form name="uploadImage" ng-submit='vm.sendToImgur()'>
+    <div class="btn" ngf-select ng-model="vm.uploadImageForm" name="uploadImage" ngf-pattern="'image/*'" ngf-no-object-url="true"
+      ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100"
+      ngf-resize="{width: 100, height: 100}">Select Image</div><br>
+      <button class="btn" type="submit">submit</button>
+  </form>
+</div>
+
