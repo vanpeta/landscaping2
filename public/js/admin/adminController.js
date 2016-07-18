@@ -12,6 +12,7 @@
     vm.test="testing"
     vm.uploadImageForm
     vm.sendToImgur=sendToImgur
+    vm.deleteImage=deleteImage
     var albumDeletehash = "8dTjIP45GplZuc0"
     var albumId = "fKeE0"
     vm.images= []
@@ -88,6 +89,7 @@
 //ADD selected image to Album
     function addImageToAlbum () {
       console.log('addImageToAlbum triggered')
+      console.log('this is the ids inside the function addimage to album '+ids)
       var promise = $http({
         method: 'PUT',
         url: 'https://api.imgur.com/3/album/'+albumDeletehash+'/add',
@@ -118,6 +120,37 @@
       )
     };
 
+    function deleteImage (image) {
+      console.log('deleteImage Triggered')
+      console.log(image)
+      var index = vm.images.indexOf(image)
+      console.log(index)
+      vm.images.splice(index,1);
+      var imagesIds = []
+      vm.images.forEach(function(e) {
+        imagesIds.push(e.id)
+      })
+      console.log('this is vm.images after forEach method:')
+      console.log(vm.images)
+      console.log('this is imagesIds after forEach method:')
+      console.log(imagesIds)
+
+      var promise = $http({
+        method: 'PUT',
+        url: 'https://api.imgur.com/3/album/'+albumDeletehash,
+        headers: {'Authorization': 'Client-ID '+imgurClient},
+        data:{'ids': imagesIds}
+      }).then (
+        function (res) {
+          console.log(res)
+        }
+      )
+    }
+
   }
 })();
+
+
+
+
 
