@@ -1,5 +1,12 @@
 <h1>admin</h1>
 
+<div class='images-grid'>
+  <p>Our Work Images</p>
+  <div ng-repeat='image in vm.images'>
+    <img src='{{image.link}}'>
+  </div>
+</div>
+
 <div>
   <p>Upload a new image for the "Our Work" page</p>
   <form name="uploadImage" ng-submit='vm.sendToImgur()'>
