@@ -17,7 +17,7 @@
       $http({
         method:'POST',
         url: '/sendemail',
-        data: 'contactEmail'
+        data: vm.contactEmail
       }).then(function(res){
 
       })
