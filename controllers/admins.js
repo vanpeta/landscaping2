@@ -40,7 +40,7 @@ function sendEmail(req,res,next) {
     text: req.body.message
   });
 
-  res.json(data)
+  res.json(res.data)
 
   if (err) next(err);
 }
