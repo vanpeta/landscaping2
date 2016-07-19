@@ -24,6 +24,9 @@ router.get('/', function(req, res, next) {
 router.get('*', function (req, res, next) {
   res.redirect('/');
 });
+/* Contact email Route */
+router.route('/sendemail')
+  .post(adminsController.sendEmail)
 
 
 

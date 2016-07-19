@@ -1,5 +1,23 @@
 var Admin = require('../models/admin');
 require('dotenv').load();
+var nodemailer = require('nodemailer');
+var xoauth2 = require('xoauth2');
+
+var generator = require('xoauth2').createXOAuth2Generator({
+  user: 'vanpeta.developer@gmail.com',
+  clientId: process.env.Google_OAuth_client_ID,
+  clientSecret: process.env.Google_OAuth_client_secret,
+  refreshToken:process.env.Google_Refresh_Token,
+});
+
+generator.on('token', function(token){
+  console.log('New token for %s: %s', token.user, token.accessToken)
+})
+
+var smtpTransport = nodemailer.createTransport({
+  service: 'gmail',
+  auth:{xoauth2:generator}
+});
 
 module.exports = {
   index: index,
@@ -7,8 +25,24 @@ module.exports = {
   create: create,
   update: update,
   destroy: destroy,
-  imgurKey: imgurKey
+  imgurKey: imgurKey,
+  sendEmail:sendEmail
   // me: me
+}
+
+
+
+function sendEmail(req,res,next) {
+
+  smtpTransport.sendMail({
+    to: 'vanpeta.developer@gmail.com',
+    subject: req.body.subject,
+    text: req.body.message
+  });
+
+  res.json(data)
+
+  if (err) next(err);
 }
 
 function index(req,res,next) {

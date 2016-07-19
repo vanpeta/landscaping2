@@ -33,7 +33,7 @@
     .state ('Contact', {
       url: '/contact',
       templateUrl: 'js/contact/contact.html',
-      controller: 'mainController',
+      controller: 'contactController',
       controllerAs: 'vm'
     })
     .state ('Admin', {

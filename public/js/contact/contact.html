@@ -1,21 +1,21 @@
 <h3>Contact</h3>
 
 <div class='row col s4'>
-  <form class='col s4' name='contactForm' ng-submit='vm.sendForm();'>
+  <form class='col s4' name='contactForm' ng-submit='vm.sendEmail();'>
     <div class="input-field">
-      <input ng-model='vm.contact.name' type="text" name="name" required id="name" class='validate'>
+      <input ng-model='vm.contactEmail.name' type="text" name="name" required id="name" class='validate'>
       <label for="name">Your Name (required)</label>
     </div>
     <div class="input-field">
-      <input ng-model='vm.contact.email' type="email" name="email" required id="email" class='validate'>
+      <input ng-model='vm.contactEmail.email' type="email" name="email" required id="email" class='validate'>
       <label for="email">Your email (required)</label>
     </div>
     <div class="input-field">
-      <input ng-model='vm.contact.subject' type="text" name="subject" required id="subject" class='validate'>
+      <input ng-model='vm.contactEmail.subject' type="text" name="subject" required id="subject" class='validate'>
       <label for="email">Subject (required)</label>
     </div>
     <div class="input-field">
-      <input ng-model='vm.contact.message' type="text" name="message" required id="message" class='validate'>
+      <input ng-model='vm.contactEmail.message' type="text" name="message" required id="message" class='validate'>
       <label for="email">Your Message (required)</label>
     </div>
     <button type='submit'>Send</button>
