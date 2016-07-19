@@ -10,7 +10,7 @@
   function adminController($http, Upload){
     var vm=this;
     vm.test="testing"
-    vm.uploadImageForm
+    vm.ImageForm ={}
     vm.sendToImgur=sendToImgur
     vm.deleteImage=deleteImage
     var albumDeletehash = "8dTjIP45GplZuc0"
@@ -18,6 +18,10 @@
     vm.images= []
     var imgurClient=''
     var ids = []
+    vm.loading = true
+    vm.gallery = false
+    vm.numberToEnglish=numberToEnglish
+
 
 // GET Imgur Client Key from the back-end
     $http({
@@ -55,11 +59,11 @@
         console.log('album detected')
 //Transform selected image to 64 binary code
         var fileReader = new FileReader();
-        fileReader.readAsArrayBuffer(vm.uploadImageForm);
+        fileReader.readAsArrayBuffer(vm.imageForm.image);
         fileReader.onload = function(e) {
           $http({
             url: 'upload',
-            header: {'Content-Type': vm.uploadImageForm.type},
+            header: {'Content-Type': vm.imageForm.image.type},
             data: e.target.result
           }).then (function(response) {
 
@@ -73,14 +77,14 @@
         var promise = $http({
           method: 'POST',
           url: 'https://api.imgur.com/3/image',
-          data: vm.uploadImageForm,
+          data: vm.imageForm.image,
           headers: {'Authorization': 'Client-ID '+imgurClient}
         }).then(
           function(res) {
             console.log(res)
             ids.push(res.data.data.id)
             console.log("SUCCESS!!! the new image uploaded id is "+ids[0])
-            addImageToAlbum();
+            addImageToAlbum ()
           }
         );
       }
@@ -107,17 +111,23 @@
 
 // GET Album images
     function getAlbumImages () {
-      console.log('getAlbumImages triggered')
-      $http({
-        method: 'GET',
-        url: 'https://api.imgur.com/3/album/'+albumId+'/images',
-        headers: {'Authorization': 'Client-ID '+imgurClient}
-      }).then(
-        function (res) {
-          vm.images = res.data.data
-          console.log(vm.images)
-        }
-      )
+      vm.gallery = false;
+      vm.loading = true;
+      setTimeout(function(){
+        console.log('getAlbumImages triggered')
+        $http({
+          method: 'GET',
+          url: 'https://api.imgur.com/3/album/'+albumId+'/images',
+          headers: {'Authorization': 'Client-ID '+imgurClient}
+        }).then(
+          function (res) {
+            vm.images = res.data.data
+            console.log(vm.images)
+            vm.loading = false
+            vm.gallery = true
+          }
+        )
+      },5000)
     };
 
     function deleteImage (image) {
@@ -146,6 +156,73 @@
         }
       )
     }
+    function numberToEnglish(image) {
+      var n=(vm.images.indexOf(image)+1)
+      var string = n.toString(), units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words, and = 'and';
+/* Is number zero? */
+      if( parseInt( string ) === 0 ) {
+        return 'zero';
+      }
+/* Array of units as words */
+      units = [ '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ];
+/* Array of tens as words */
+      tens = [ '', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety' ];
+/* Array of scales as words */
+      scales = [ '', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quatttuor-decillion', 'quindecillion', 'sexdecillion', 'septen-decillion', 'octodecillion', 'novemdecillion', 'vigintillion', 'centillion' ];
+/* Split user arguemnt into 3 digit chunks from right to left */
+      start = string.length;
+      chunks = [];
+      while( start > 0 ) {
+        end = start;
+        chunks.push( string.slice( ( start = Math.max( 0, start - 3 ) ), end ) );
+      }
+/* Check if function has enough scale words to be able to stringify the user argument */
+      chunksLen = chunks.length;
+      if( chunksLen > scales.length ) {
+        return '';
+      }
+/* Stringify each integer in each chunk */
+      words = [];
+      for( i = 0; i < chunksLen; i++ ) {
+        chunk = parseInt( chunks[i] );
+        if( chunk ) {
+/* Split chunk into array of individual integers */
+          ints = chunks[i].split( '' ).reverse().map( parseFloat );
+/* If tens integer is 1, i.e. 10, then add 10 to units integer */
+          if( ints[1] === 1 ) {
+            ints[0] += 10;
+            }
+/* Add scale word if chunk is not zero and array item exists */
+          if( ( word = scales[i] ) ) {
+                words.push( word );
+            }
+/* Add unit word if array item exists */
+          if( ( word = units[ ints[0] ] ) ) {
+                words.push( word );
+          }
+/* Add tens word if array item exists */
+          if( ( word = tens[ ints[1] ] ) ) {
+                words.push( word );
+          }
+            /* Add 'and' string after units or tens integer if: */
+            // if( ints[0] || ints[1] ) {
+
+            //      Chunk has a hundreds integer or chunk is the first of multiple chunks
+            //     if( ints[2] || ! i && chunksLen ) {
+            //         words.push( and );
+            //     }
+
+            // }
+
+/* Add hundreds word if array item exists */
+          if( ( word = units[ ints[2] ] ) ) {
+                words.push( word + ' hundred' );
+          }
+        }
+      }
+      return words.reverse().join( ' ' );
+    }
+
 
   }
 })();
