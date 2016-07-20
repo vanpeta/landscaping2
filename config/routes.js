@@ -1,6 +1,7 @@
 var express = require ('express');
 var router = express.Router();
 var adminsController = require ('../controllers/admins');
+var contentController = require ('../controllers/content');
 
 
 /* API Routes */
@@ -28,6 +29,10 @@ router.get('*', function (req, res, next) {
 router.route('/sendemail')
   .post(adminsController.sendEmail)
 
+/* Contact email Route */
+router.route('/api/content')
+  .get(contentController.getContent)
+  .put(contentController.updateContent)
 
 
 module.exports = router;

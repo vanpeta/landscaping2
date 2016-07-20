@@ -21,23 +21,52 @@
     vm.loading = true
     vm.gallery = false
     vm.numberToEnglish=numberToEnglish
-    vm.aboutTitle = 'About'
-    vm.aboutSubtitle = 'About S & P Hanson Landscaping'
-    vm.aboutParagraph1 = 'S & P Hanson Landscaping is a family owned and operated business in the Central Valley since 1992. In 1976, Steve Hanson graduated with a degree in Ornamental Horticulture from California Polytechnic State University, San Luis Obispo.'
-    vm.aboutParagraph2 = 'After years of experience in landscape design and construction management, Steve established S & P Hanson Landscaping in 1992.'
-    vm.serviceTitle = 'Services'
-    vm.serviceSubtitle = 'About S & P Hanson Landscaping'
-    vm.serviceParagraph1 = 'We are a full service landscape design, installation, and maintenance company dedicated to excellence. Our talented team can build your project from scratch or improve your existing outdoor environment at a cost that will fit your budget. Our creative ideas combined with the best products and high quality workmanship will make for a unique and rewarding landscape that will provide lasting enjoyment.'
-    vm.serviceSubtitle2 = 'Our maintenance services'
-    vm.serviceParagraph2 = 'Not only are we known for our superior installation services, but we have also developed an outstanding reputation for our superior landscape maintenance and horticultural services.'
+    vm.aboutTitle = ''
+    vm.aboutSubtitle = ''
+    vm.aboutParagraph1 = ''
+    vm.aboutParagraph2 = ''
+    vm.serviceTitle = ''
+    vm.serviceSubtitle = ''
+    vm.serviceParagraph1 = ''
+    vm.serviceSubtitle2 = ''
+    vm.serviceParagraph2 = ''
+    vm.changeContent = changeContent
 
+    function changeContent () {
+      $http({
+        method: 'PUT',
+        url: 'api/content',
+        data: {},
+      }).then (
+      function (res) {
+        console.log(res)
+      })
+    }
+
+//Load Content Page from database
+    $http({
+      method:'GET',
+      url:'/api/content'
+    }).then(
+      function(res){
+        vm.aboutTitle = res.data[0].aboutTitle
+        vm.aboutSubtitle = res.data[0].aboutSubtitle
+        vm.aboutParagraph1 = res.data[0].aboutParagraph1
+        vm.aboutParagraph2 = res.data[0].aboutParagraph2
+        vm.serviceTitle = res.data[0].serviceTitle
+        vm.serviceSubtitle = res.data[0].serviceSubtitle
+        vm.serviceParagraph1 = res.data[0].serviceParagraph1
+        vm.serviceSubtitle2 = res.data[0].serviceSubtitle2
+        vm.serviceParagraph2 = res.data[0].serviceParagraph2
+      }
+    );
 
 // GET Imgur Client Key from the back-end
     $http({
-      method: 'GET',
-      url: '/api/imgurKey'
+      method:'GET',
+      url:'/api/imgurKey'
     }).then(
-      function (res) {
+      function(res){
         imgurClient = res.data
         getAlbumImages()
       }
