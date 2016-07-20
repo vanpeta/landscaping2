@@ -31,35 +31,42 @@
     vm.serviceSubtitle2 = ''
     vm.serviceParagraph2 = ''
     vm.changeContent = changeContent
+    vm.changeContentInput = {}
 
     function changeContent () {
+      var data = vm.changeContentInput
+      console.log(data)
       $http({
         method: 'PUT',
         url: 'api/content',
-        data: {},
+        data: data,
       }).then (
       function (res) {
         console.log(res)
+        loadContent()
       })
     }
 
 //Load Content Page from database
-    $http({
-      method:'GET',
-      url:'/api/content'
-    }).then(
-      function(res){
-        vm.aboutTitle = res.data[0].aboutTitle
-        vm.aboutSubtitle = res.data[0].aboutSubtitle
-        vm.aboutParagraph1 = res.data[0].aboutParagraph1
-        vm.aboutParagraph2 = res.data[0].aboutParagraph2
-        vm.serviceTitle = res.data[0].serviceTitle
-        vm.serviceSubtitle = res.data[0].serviceSubtitle
-        vm.serviceParagraph1 = res.data[0].serviceParagraph1
-        vm.serviceSubtitle2 = res.data[0].serviceSubtitle2
-        vm.serviceParagraph2 = res.data[0].serviceParagraph2
-      }
-    );
+    function loadContent () {
+      $http({
+        method:'GET',
+        url:'/api/content'
+      }).then(
+        function(res){
+          vm.aboutTitle = res.data[0].aboutTitle
+          vm.aboutSubtitle = res.data[0].aboutSubtitle
+          vm.aboutParagraph1 = res.data[0].aboutParagraph1
+          vm.aboutParagraph2 = res.data[0].aboutParagraph2
+          vm.serviceTitle = res.data[0].serviceTitle
+          vm.serviceSubtitle = res.data[0].serviceSubtitle
+          vm.serviceParagraph1 = res.data[0].serviceParagraph1
+          vm.serviceSubtitle2 = res.data[0].serviceSubtitle2
+          vm.serviceParagraph2 = res.data[0].serviceParagraph2
+        }
+      );
+    };
+    loadContent()
 
 // GET Imgur Client Key from the back-end
     $http({

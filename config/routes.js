@@ -18,6 +18,11 @@ router.route('/api/admins/:id')
 router.route('/api/imgurKey')
   .get(adminsController.imgurKey)
 
+/* Contact email Route */
+router.route('/api/content')
+  .get(contentController.getContent)
+  .put(contentController.updateContent)
+
 /* GET homepage */
 router.get('/', function(req, res, next) {
   res.sendfile('public/index.html');
@@ -28,11 +33,6 @@ router.get('*', function (req, res, next) {
 /* Contact email Route */
 router.route('/sendemail')
   .post(adminsController.sendEmail)
-
-/* Contact email Route */
-router.route('/api/content')
-  .get(contentController.getContent)
-  .put(contentController.updateContent)
 
 
 module.exports = router;
