@@ -4,20 +4,23 @@
   </div>
 </div>
 <div class="row">
-  <div class='center-align col l6'>
+  <div class='center-align col l4'>
     <h5>Our Work Page</h5>
   </div>
-  <div class='center-align col l6'>
+  <div class='center-align col l4'>
     <h5>About Page</h5>
+  </div>
+  <div class='center-align col l4'>
+    <h5>Service Page</h5>
   </div>
 </div>
 
 <div class='row'>
-  <div class='images-grid col l6'>
-    <div class='col l3'>
-      <p>Uploaded Images: {{vm.images.length}}</p>
+  <div class='images-grid col l4'>
+    <div class='col l6'>
+      <div>Uploaded Images: {{vm.images.length}}</div>
     </div>
-    <div class='col l3'>
+    <div class='col l6'>
       <button class="waves-effect waves-light btn modal-trigger" data-target="modal-uploadImage">New Image</button>
     </div>
     <div ng-show='vm.loading' class='center-align'>
@@ -35,29 +38,105 @@
         </div>
       </div>
     </div>
-    <div ng-show='vm.gallery' ng-repeat='image in vm.images' class="col s12 m7 l3">
-      <div class='card small'>
-        <div class='card-image'>
-          <img src='{{image.link}}' class='adminImages'>
-          <spam class='card-title'>{{image.title}}</spam>
-        </div>
-        <div class='card-content'>
-          <p>{{image.description}}</p>
-        </div>
-        <div class="card-action">
-          <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
+    <div class='images'>
+      <div ng-show='vm.gallery' ng-repeat='image in vm.images' class="col l12">
+        <div class='card small'>
+          <div class='card-image'>
+            <img src='{{image.link}}' class='adminImages'>
+            <spam class='card-title'>{{image.title}}</spam>
+          </div>
+          <div class='card-content'>
+            <p>{{image.description}}</p>
+          </div>
+          <div class="card-action">
+            <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class='about-page-options col l6 m3 s12'>
-    <form name='changeTitle' ng-submit='vm.changetitle()'>
-      <div class='about-page-options-title input-field col l5'>
+  <div class='about-page-options col l4'>
+    <form name='changeAboutTitle' ng-submit='vm.changeContent()'>
+      <div class='about-page-options-title input-field col l9'>
         <input type='text' ng-model='vm.aboutTitle'>
         <label>title</label>
       </div>
-      <div class='col l1'>
-        <button class='btn small' type='submit'>Change</button>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeAboutSubtitle' ng-submit='vm.changeContent()'>
+      <div class='about-page-options-title input-field col l9'>
+        <input type='text' ng-model='vm.aboutSubtitle'>
+        <label>subtitle</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeAboutParagraph1' ng-submit='vm.changeContent()'>
+      <div class='about-page-options-title input-field col l9'>
+        <textarea type='text' ng-model='vm.aboutParagraph1'></textarea>
+        <label>paragraph 1</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeAboutParagraph2' ng-submit='vm.changeContent()'>
+      <div class='about-page-options-title input-field col l9'>
+        <textarea type='text' ng-model='vm.aboutParagraph2'></textarea>
+        <label>paragraph 2</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+  </div>
+  <div class='service-page-options col l4'>
+    <form name='serviceServiceTitle' ng-submit='vm.changeContent()'>
+      <div class='service-page-options-title input-field col l9'>
+        <input type='text' ng-model='vm.serviceTitle'>
+        <label>title</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeServiceSubtitle' ng-submit='vm.changeContent()'>
+      <div class='service-page-options-title input-field col l9'>
+        <input type='text' ng-model='vm.serviceSubtitle'>
+        <label>subtitle</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeServiceParagraph1' ng-submit='vm.changeContent()'>
+      <div class='service-page-options-title input-field col l9'>
+        <textarea type='text' ng-model='vm.serviceParagraph1'></textarea>
+        <label>paragraph1</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='serviceServiceTitle2' ng-submit='vm.changeContent()'>
+      <div class='service-page-options-title input-field col l9'>
+        <input type='text' ng-model='vm.serviceSubtitle2'>
+        <label>subtitle 2</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='cserviceServiceParagraph2' ng-submit='vm.changeContent()'>
+      <div class='about-page-options-title input-field col l9'>
+        <textarea type='text' ng-model='vm.serviceParagraph2'></textarea>
+        <label>paragraph 2</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
       </div>
     </form>
   </div>

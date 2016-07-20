@@ -14,4 +14,13 @@
 .pointer {
   cursor: pointer;
 }
+.images {
+  margin-top: 10px;
+}
+.service-content-container {
+  height: 500px;
+}
+.service-content {
+  height: 400px;
+}
 
