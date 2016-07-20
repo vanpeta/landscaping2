@@ -15,7 +15,7 @@
     .state ('About', {
       url: '/about',
       templateUrl: 'js/about/about.html',
-      controller: 'mainController',
+      controller: 'adminController',
       controllerAs: 'vm'
     })
     .state ('Work', {

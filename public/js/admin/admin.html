@@ -1,17 +1,75 @@
-<h1>admin</h1>
-
-<div class='images-grid'>
-  <p>Our Work Images. {{vm.images.length}} Photos</p>
-  <div ng-show='vm.loading'>
-    <img id='loading' src='images/loading-photo.gif'>
-  </div>
-  <div class='row'>
-    <div ng-show='vm.gallery' ng-repeat='image in vm.images' class='col l1'>
-      <img src='{{image.link}}' class='adminImages'><br>
-      <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
-    </div>
+<div class='row'>
+  <div class='center-align col l12'>
+    <h3>Admin Console</h3>
   </div>
 </div>
+<div class="row">
+  <div class='center-align col l6'>
+    <h5>Our Work Page</h5>
+  </div>
+  <div class='center-align col l6'>
+    <h5>About Page</h5>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='images-grid col l6'>
+    <div class='col l3'>
+      <p>Uploaded Images: {{vm.images.length}}</p>
+    </div>
+    <div class='col l3'>
+      <button class="waves-effect waves-light btn modal-trigger" data-target="modal-uploadImage">New Image</button>
+    </div>
+    <div ng-show='vm.loading' class='center-align'>
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-green-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show='vm.gallery' ng-repeat='image in vm.images' class="col s12 m7 l3">
+      <div class='card small'>
+        <div class='card-image'>
+          <img src='{{image.link}}' class='adminImages'>
+          <spam class='card-title'>{{image.title}}</spam>
+        </div>
+        <div class='card-content'>
+          <p>{{image.description}}</p>
+        </div>
+        <div class="card-action">
+          <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='about-page-options col l6 m3 s12'>
+    <form name='changeTitle' ng-submit='vm.changetitle()'>
+      <div class='about-page-options-title input-field col l5'>
+        <input type='text' ng-model='vm.aboutTitle'>
+        <label>title</label>
+      </div>
+      <div class='col l1'>
+        <button class='btn small' type='submit'>Change</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--     <div class='about-page-options-subtitle input-field'>
+    </div>
+    <div class='about-page-options-paragraph1 input-field'>
+    </div>
+    <div class='about-page-options-paragraph2 input-field'>
+    </div>
+  </div>
+</div> -->
 
 <div id='modal-uploadImage' class='modal'>
   <div class='modal-content'>
@@ -33,7 +91,5 @@
     </form>
   </div>
 </div>
-
-<button class="waves-effect waves-light btn modal-trigger" data-target="modal-uploadImage">New Image</button>
 
 <!-- ngf-resize="{width: 100, height: 100}" -->

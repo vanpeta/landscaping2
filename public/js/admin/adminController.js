@@ -21,6 +21,10 @@
     vm.loading = true
     vm.gallery = false
     vm.numberToEnglish=numberToEnglish
+    vm.aboutTitle = 'About'
+    vm.aboutSubtitle = 'About S & P Hanson Landscaping'
+    vm.aboutParagraph1 = 'S & P Hanson Landscaping is a family owned and operated business in the Central Valley since 1992. In 1976, Steve Hanson graduated with a degree in Ornamental Horticulture from California Polytechnic State University, San Luis Obispo.'
+    vm.aboutParagraph2 = 'After years of experience in landscape design and construction management, Steve established S & P Hanson Landscaping in 1992.'
 
 
 // GET Imgur Client Key from the back-end
@@ -125,6 +129,9 @@
             console.log(vm.images)
             vm.loading = false
             vm.gallery = true
+            setTimeout(function(){
+              $('.carousel').carousel()
+            },10)
           }
         )
       },5000)

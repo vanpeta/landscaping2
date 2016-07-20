@@ -24,7 +24,7 @@
         console.log(res)
         if (res.status==200) {
           vm.showDisplay = true;
-          vm.display="Thank you, your message has been sent. We'll respond you soon."
+          vm.display="Thank you, your message has been sent. We'll respond to you soon."
         } else {
           vm.display='Something went wrong, please try again.'
         }

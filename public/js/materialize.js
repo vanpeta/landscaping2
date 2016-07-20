@@ -5,7 +5,7 @@ $(document).ready(function(){
 $("#home").click(function(){
   setTimeout(function(){
     $('.slider').slider();
-  },10)
+  },50)
 });
 
 $(document).ready(function(){
@@ -13,18 +13,18 @@ $(document).ready(function(){
   });
 
 
-$("#work").click(function(){
-  setTimeout(function(){
-    $('.carousel').carousel();
-    $('.materialboxed').materialbox();
-  },7000)
-});
+// $("#work").click(function(){
+//   setTimeout(function(){
+//     $('.carousel').carousel();
+//     $('.materialboxed').materialbox();
+//   },7000)
+// });
 
 
- $(document).ready(function(){
-    setTimeout(function(){
-      $('.carousel').carousel()
-    },7000)
-  });
+ // $(document).ready(function(){
+ //    setTimeout(function(){
+ //      $('.carousel').carousel()
+ //    },7000)
+ //  });
 
 

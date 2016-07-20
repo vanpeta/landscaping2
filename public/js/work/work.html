@@ -4,8 +4,18 @@
 
 <p>{{vm.images.length}} Photos.</p>
   <div ng-show='vm.loading'>
-  <img id='loading' src='images/loading-photo.gif'>
-</div>
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer spinner-green-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="carousel">
   <div class="carousel-item enlarge" ng-repeat='image in vm.images' href='#{{vm.numberToEnglish(image)}}!'>
     <img src='{{image.link}}' '><br>
