@@ -30,19 +30,19 @@ module.exports = {
   // me: me
 }
 
-
-
 function sendEmail(req,res,next) {
+  var mailOptions = {
+    to: 'vanpeta.developer@gmail.com', //REPLACE with Dan's email
+    subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject,
+    text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
+  }
+  smtpTransport.sendMail(
+    mailOptions,
 
-  smtpTransport.sendMail({
-    to: 'vanpeta.developer@gmail.com',
-    subject: req.body.subject,
-    text: req.body.message
-  });
-
-  res.json(res.data)
-
-  if (err) next(err);
+  function(err) {
+    if (err) next(err);
+    res.json(res.data)
+  })
 }
 
 function index(req,res,next) {

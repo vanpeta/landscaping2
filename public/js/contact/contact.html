@@ -1,7 +1,7 @@
 <h3>Contact</h3>
 
-<div class='row col s4'>
-  <form class='col s4' name='contactForm' ng-submit='vm.sendEmail();'>
+<div class='row'>
+  <form class='col s4 offset-s3' name='contactForm' ng-submit='vm.sendEmail()'>
     <div class="input-field">
       <input ng-model='vm.contactEmail.name' type="text" name="name" required id="name" class='validate'>
       <label for="name">Your Name (required)</label>
@@ -18,6 +18,8 @@
       <input ng-model='vm.contactEmail.message' type="text" name="message" required id="message" class='validate'>
       <label for="email">Your Message (required)</label>
     </div>
-    <button type='submit'>Send</button>
+    <p class='red-text' ng-show='vm.showDisplay'>{{vm.display}}</p>
+    <button class='btn' type='submit'>Send</button>
   </form>
 </div>
+

@@ -27,6 +27,4 @@ $("#work").click(function(){
     },7000)
   });
 
- $(".enlarge").click(function(){
-  $(this).width(1000)
- })
+
