@@ -33,22 +33,11 @@
     vm.changeContent = changeContent
     vm.changeContentInput = {}
 
-    function changeContent () {
-      var data = vm.changeContentInput
-      console.log(data)
-      $http({
-        method: 'PUT',
-        url: 'api/content',
-        data: data,
-      }).then (
-      function (res) {
-        console.log(res)
-        loadContent()
-      })
-    }
+//Load Content Page from database when loadin the app
+    loadContent()
 
-//Load Content Page from database
     function loadContent () {
+      console.log('load content triggered')
       $http({
         method:'GET',
         url:'/api/content'
@@ -66,7 +55,6 @@
         }
       );
     };
-    loadContent()
 
 // GET Imgur Client Key from the back-end
     $http({
@@ -78,6 +66,30 @@
         getAlbumImages()
       }
     );
+
+    function changeContent () {
+      var data = vm.changeContentInput
+      console.log(data)
+      $http({
+        method: 'PUT',
+        url: 'api/content',
+        data: data,
+      }).then (
+        function (res) {
+          console.log(res)
+          vm.aboutTitle = res.data.aboutTitle
+          vm.aboutSubtitle = res.data.aboutSubtitle
+          vm.aboutParagraph1 = res.data.aboutParagraph1
+          vm.aboutParagraph2 = res.data.aboutParagraph2
+          vm.serviceTitle = res.data.serviceTitle
+          vm.serviceSubtitle = res.data.serviceSubtitle
+          vm.serviceParagraph1 = res.data.serviceParagraph1
+          vm.serviceSubtitle2 = res.data.serviceSubtitle2
+          vm.serviceParagraph2 = res.data.serviceParagraph2
+          console.log(vm.aboutTitle)
+        }
+      )
+    };
 
 //CREATE Album
     function createAlbum () {
@@ -137,8 +149,6 @@
 
 //ADD selected image to Album
     function addImageToAlbum () {
-      console.log('addImageToAlbum triggered')
-      console.log('this is the ids inside the function addimage to album '+ids)
       var promise = $http({
         method: 'PUT',
         url: 'https://api.imgur.com/3/album/'+albumDeletehash+'/add',
@@ -147,8 +157,6 @@
       });
       promise.then(
         function(res) {
-          console.log(res)
-          console.log('image added to album')
           getAlbumImages()
         }
       )
@@ -159,7 +167,6 @@
       vm.gallery = false;
       vm.loading = true;
       setTimeout(function(){
-        console.log('getAlbumImages triggered')
         $http({
           method: 'GET',
           url: 'https://api.imgur.com/3/album/'+albumId+'/images',
@@ -167,32 +174,23 @@
         }).then(
           function (res) {
             vm.images = res.data.data
-            console.log(vm.images)
             vm.loading = false
             vm.gallery = true
             setTimeout(function(){
               $('.carousel').carousel()
-            },10)
+            },1000)
           }
         )
       },5000)
     };
 
     function deleteImage (image) {
-      console.log('deleteImage Triggered')
-      console.log(image)
       var index = vm.images.indexOf(image)
-      console.log(index)
       vm.images.splice(index,1);
       var imagesIds = []
       vm.images.forEach(function(e) {
         imagesIds.push(e.id)
       })
-      console.log('this is vm.images after forEach method:')
-      console.log(vm.images)
-      console.log('this is imagesIds after forEach method:')
-      console.log(imagesIds)
-
       var promise = $http({
         method: 'PUT',
         url: 'https://api.imgur.com/3/album/'+albumDeletehash,
@@ -200,10 +198,10 @@
         data:{'ids': imagesIds}
       }).then (
         function (res) {
-          console.log(res)
         }
       )
     }
+
     function numberToEnglish(image) {
       var n=(vm.images.indexOf(image)+1)
       var string = n.toString(), units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words, and = 'and';

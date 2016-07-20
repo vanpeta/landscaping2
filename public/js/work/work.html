@@ -1,9 +1,11 @@
-<h1>Our Work</h1>
+<div class='center-align'>
+  <h3>Our Work</h3>
+</div>
 
 <div class='gallery'>
 
 <p>{{vm.images.length}} Photos.</p>
-  <div ng-show='vm.loading'>
+  <div ng-show='vm.loading' class='center-align'>
     <div class="preloader-wrapper active">
       <div class="spinner-layer spinner-green-only">
         <div class="circle-clipper left">
@@ -16,8 +18,8 @@
       </div>
     </div>
   </div>
-<div class="carousel">
-  <div class="carousel-item enlarge" ng-repeat='image in vm.images' href='#{{vm.numberToEnglish(image)}}!'>
+<div class="carousel row">
+  <div class="carousel-item col l3" ng-repeat='image in vm.images' href='#{{vm.numberToEnglish(image)}}!'>
     <img src='{{image.link}}' '><br>
   </div>
 </div>
