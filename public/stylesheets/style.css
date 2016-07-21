@@ -18,10 +18,12 @@
   margin-top: 10px;
 }
 .service-content-container {
-  height: 500px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
 }
 .service-content {
-  height: 400px;
+  position: abosulte;
 }
 .contact-btn {
   margin-top: 25px;
