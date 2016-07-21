@@ -23,5 +23,14 @@
 .service-content {
   height: 400px;
 }
-
-
+.contact-btn {
+  margin-top: 25px;
+}
+.contact-textarea {
+  height: 150px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-color: grey;
+  outline: none;
+  }
