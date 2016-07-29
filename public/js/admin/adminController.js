@@ -13,8 +13,8 @@
     vm.ImageForm ={}
     vm.sendToImgur=sendToImgur
     vm.deleteImage=deleteImage
-    var albumDeletehash = "8dTjIP45GplZuc0"
-    var albumId = "fKeE0"
+    var albumDeletehash = ""
+    var albumId = ""
     vm.images= []
     var imgurClient=''
     var ids = []
@@ -34,7 +34,10 @@
       url:'/api/imgurKey'
     }).then(
       function(res){
-        imgurClient = res.data
+        console.log(res)
+        imgurClient = res.data.imgurClient
+        albumId = res.data.albumId
+        albumDeletehash = res.data.albumDeletehash
         getAlbumImages()
       }
     );

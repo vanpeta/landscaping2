@@ -25,7 +25,7 @@ module.exports = {
   create: create,
   update: update,
   destroy: destroy,
-  imgurKey: imgurKey,
+  imgurInfo: imgurInfo,
   sendEmail:sendEmail
   // me: me
 }
@@ -119,8 +119,13 @@ function destroy (req,res,next) {
   });
 };
 
-function imgurKey (req, res, next) {
-  res.json(process.env.IMGUR_Client_ID)
+function imgurInfo (req, res, next) {
+  imgurKeys={
+    imgurClient: process.env.IMGUR_Client_ID,
+    albumId: process.env.albumId,
+    albumDeletehash: process.env.albumDeletehash
+  }
+  res.json(imgurKeys)
 };
 
 

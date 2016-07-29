@@ -16,7 +16,7 @@ router.route('/api/admins/:id')
 
 /* GET env variables for angular */
 router.route('/api/imgurKey')
-  .get(adminsController.imgurKey)
+  .get(adminsController.imgurInfo)
 
 /* Contact email Route */
 router.route('/api/content')
