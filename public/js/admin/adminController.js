@@ -5,9 +5,9 @@
   .module('landscaping')
   .controller('adminController', adminController)
 
-  adminController.$inject=['$http', 'Upload'];
+  adminController.$inject=['$http', 'Upload', 'adminService', '$scope'];
 
-  function adminController($http, Upload){
+  function adminController($http, Upload, adminService, $scope){
     var vm=this;
     vm.test="testing"
     vm.ImageForm ={}
@@ -21,15 +21,11 @@
     vm.loading = true
     vm.gallery = false
     vm.numberToEnglish=numberToEnglish
-    vm.aboutTitle = ''
-    vm.aboutSubtitle = ''
-    vm.aboutParagraph1 = ''
-    vm.aboutParagraph2 = ''
-    vm.serviceTitle = ''
-    vm.serviceSubtitle = ''
-    vm.serviceParagraph1 = ''
-    vm.serviceSubtitle2 = ''
-    vm.serviceParagraph2 = ''
+
+    $scope.setContent = adminService.setContent
+    $scope.content = adminService.getContent()
+    $scope.newContent =''
+
     vm.changeContent = changeContent
     vm.changeContentInput = {}
 
