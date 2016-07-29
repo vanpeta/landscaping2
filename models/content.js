@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 
 
 var contentSchema = mongoose.Schema({
+  caption1: {type: String},
+  caption2: {type: String},
+  caption3: {type: String},
   aboutTitle: {type: String},
   aboutSubtitle: {type: String},
   aboutParagraph1: {type: String},

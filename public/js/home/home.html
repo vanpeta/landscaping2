@@ -1,21 +1,21 @@
-<div class="slider fullscreen">
+<div class="slider fullscreen" ng-controller='adminController as vm'>
     <ul class="slides">
       <li>
         <img src="images/ls-1.jpg">
         <div class="caption center-align">
-          <h3>QUALITY THAT IS GUARANTEED</h3>
+          <h3>{{content.caption1}}</h3>
         </div>
       </li>
       <li>
         <img src="images/ls-2.jpg">
         <div class="caption center-align">
-          <h3>TRANSFORMING HOMES AND BUSINESSES SINCE 1992</h3>
+          <h3>{{content.caption2}}</h3>
         </div>
       </li>
       <li>
         <img src="images/ls-3.jpg">
         <div class="caption center-align">
-          <h3>YOUR YARD NEVER LOOKED MORE GREEN</h3>
+          <h3>{{content.caption3}}</h3>
         </div>
       </li>
     </ul>

@@ -4,19 +4,51 @@
   </div>
 </div>
 <div class="row">
-  <div class='center-align col l4'>
+  <div class='center-align col l3'>
+    <h5>Home Page</h5>
+  </div>
+  <div class='center-align col l3'>
     <h5>Our Work Page</h5>
   </div>
-  <div class='center-align col l4'>
+  <div class='center-align col l3'>
     <h5>{{content.aboutTitle}} Page</h5>
   </div>
-  <div class='center-align col l4'>
+  <div class='center-align col l3'>
     <h5>{{content.serviceTitle}} Page</h5>
   </div>
 </div>
 
 <div class='row'>
-  <div class='images-grid col l4'>
+  <div class='home-page-options col l3'>
+    <form name='changeCaption1' ng-submit='setContent(newContent)'>
+      <div class='home-page-options-caption1 input-field col l9'>
+        <input type='text' ng-model='newContent.caption1'>
+        <label>caption1</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeCaption2' ng-submit='setContent(newContent)'>
+      <div class='home-page-options-caption2 input-field col l9'>
+        <input type='text' ng-model='newContent.caption2'>
+        <label>caption2</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+    <form name='changeCaption3' ng-submit='setContent(newContent)'>
+      <div class='home-page-options-caption3 input-field col l9'>
+        <input type='text' ng-model='newContent.caption3'>
+        <label>caption3</label>
+      </div>
+      <div class='col l3'>
+        <button class='btn' type='submit'>Change</button>
+      </div>
+    </form>
+  </div>
+  <div class='images-grid col l3'>
     <div class='col l6'>
       <div>Uploaded Images: {{vm.images.length}}</div>
     </div>
@@ -55,7 +87,7 @@
       </div>
     </div>
   </div>
-  <div class='about-page-options col l4'>
+  <div class='about-page-options col l3'>
     <form name='changeAboutTitle' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
         <input type='text' ng-model='newContent.aboutTitle'>
@@ -93,7 +125,7 @@
       </div>
     </form>
   </div>
-  <div class='service-page-options col l4'>
+  <div class='service-page-options col l3'>
     <form name='serviceServiceTitle' ng-submit='setContent(newContent)'>
       <div class='service-page-options-title input-field col l9'>
         <input type='text' ng-model='newContent.serviceTitle'>

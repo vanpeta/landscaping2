@@ -10,6 +10,9 @@ adminService.$inject = ['$http']
 function adminService ($http) {
 
     var content ={
+    caption1 : '',
+    caption2 : '',
+    caption3 : '',
     aboutTitle : '',
     aboutSubtitle : '',
     aboutParagraph1 : '',
@@ -28,6 +31,9 @@ function adminService ($http) {
         url:'/api/content'
       }).then(
         function(res){
+          content.caption1 = res.data[0].caption1
+          content.caption2 = res.data[0].caption2
+          content.caption3 = res.data[0].caption3
           content.aboutTitle = res.data[0].aboutTitle
           content.aboutSubtitle = res.data[0].aboutSubtitle
           content.aboutParagraph1 = res.data[0].aboutParagraph1
@@ -55,6 +61,9 @@ function adminService ($http) {
         data: data,
       }).then (
         function (res) {
+          content.caption1 = res.data.caption1
+          content.caption2 = res.data.caption2
+          content.caption3 = res.data.caption3
           content.aboutTitle = res.data.aboutTitle
           content.aboutSubtitle = res.data.aboutSubtitle
           content.aboutParagraph1 = res.data.aboutParagraph1

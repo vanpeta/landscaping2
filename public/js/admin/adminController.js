@@ -27,9 +27,6 @@
     $scope.newContent ={}
 
 
-    vm.changeContentInput = {}
-
-
 
 // GET Imgur Client Key from the back-end
     $http({

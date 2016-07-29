@@ -21,6 +21,9 @@ var admins = [{admin_name: 'Testing Admin',
 
 
 var content = {
+  caption1: 'QUALITY THAT IS GUARANTEED',
+  caption2: 'TRANSFORMING HOMES AND BUSINESSES SINCE 1992',
+  caption3: 'YOUR YARD NEVER LOOKED MORE GREEN',
   aboutTitle: 'About',
   aboutSubtitle: 'About S & P Hanson Landscaping',
   aboutParagraph1: 'S & P Hanson Landscaping is a family owned and operated business in the Central Valley since 1992. In 1976, Steve Hanson graduated with a degree in Ornamental Horticulture from California Polytechnic State University, San Luis Obispo.',

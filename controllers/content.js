@@ -17,6 +17,9 @@ function getContent (req,res,next) {
 function updateContent (req,res,next) {
   Content.findOne({}, function (err, content){
     if (err) next(err);
+    content.caption1 = req.body.caption1 || content.caption1;
+    content.caption2 = req.body.caption2 || content.caption2;
+    content.caption3 = req. body.caption3 || content.caption3;
     content.aboutTitle = req.body.aboutTitle || content.aboutTitle;
     content.aboutSubtitle = req.body.aboutSubtitle || content.aboutSubtitle;
     content.aboutParagraph1 = req.body.aboutParagraph1 || content.aboutParagraph1;
