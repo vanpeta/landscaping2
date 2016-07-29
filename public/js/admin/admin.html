@@ -187,11 +187,11 @@
     <h3>Upload New Image</h3>
     <form name="uploadImage" ng-submit='vm.sendToImgur()'>
       <div class='input-field'>
-        <input ng-model='vm.uploadImageForm.title' type='text'>
+        <input ng-model='vm.imageForm.title' type='text'>
         <label>Title (optional)</label>
       </div>
       <div class='input-field'>
-        <textarea ng-model='vm.uploadImageForm.description'>Description (optional)</textarea>
+        <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
         <label>Description (optional)</label>
       </div>
       <button class="btn" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
@@ -202,5 +202,3 @@
     </form>
   </div>
 </div>
-
-<!-- ngf-resize="{width: 100, height: 100}" -->

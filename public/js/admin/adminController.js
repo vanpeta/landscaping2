@@ -18,6 +18,7 @@
     vm.images= []
     var imgurClient=''
     var ids = []
+    var imageDeletehash =''
     vm.loading = true
     vm.gallery = false
 
@@ -64,6 +65,8 @@
       }
       else {
         console.log('album detected')
+        console.log('this is the title before transformation: ' + vm.imageForm.title)
+        console.log('this is the description before transformation: ' + vm.imageForm.description)
 //Transform selected image to 64 binary code
         var fileReader = new FileReader();
         fileReader.readAsArrayBuffer(vm.imageForm.image);
@@ -90,16 +93,39 @@
         }).then(
           function(res) {
             console.log(res)
+            console.log(res.data.data)
             ids.push(res.data.data.id)
+            imageDeletehash = (res.data.data.deletehash)
             console.log("SUCCESS!!! the new image uploaded id is "+ids[0])
-            addImageToAlbum ()
+            updateImage ()
           }
         );
       }
     }
-
+//UPDATE image with title and description
+    function updateImage () {
+      console.log('updateImage triggered')
+      console.log('this is the title: ' + vm.imageForm.title)
+      console.log('this is the description: ' + vm.imageForm.description)
+      if (vm.imageForm.title || vm.imageForm.description) {
+        var promise = $http({
+          method: 'PUT',
+          url:  'https://api.imgur.com/3/image/'+imageDeletehash,
+          data: {title : vm.imageForm.title,
+                  description : vm.imageForm.description},
+          headers: {'Authorization': 'Client-ID '+imgurClient}
+        });
+        promise.then(
+          function(res) {
+            console.log('image updated')
+            console.log (res)
+            addImageToAlbum ()
+          })
+      }
+    }
 //ADD selected image to Album
     function addImageToAlbum () {
+      console.log('addImageToAlbum triggered')
       var promise = $http({
         method: 'PUT',
         url: 'https://api.imgur.com/3/album/'+albumDeletehash+'/add',
