@@ -13,18 +13,5 @@ $(document).ready(function(){
   });
 
 
-// $("#work").click(function(){
-//   setTimeout(function(){
-//     $('.carousel').carousel();
-//     $('.materialboxed').materialbox();
-//   },7000)
-// });
-
-
- // $(document).ready(function(){
- //    setTimeout(function(){
- //      $('.carousel').carousel()
- //    },7000)
- //  });
 
 
