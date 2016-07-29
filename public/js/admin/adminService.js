@@ -47,8 +47,27 @@ function adminService ($http) {
     }
 
     function setContent (newContent) {
-      content = newContent
+      console.log(newContent)
+      var data = newContent
+      $http({
+        method: 'PUT',
+        url: 'api/content',
+        data: data,
+      }).then (
+        function (res) {
+          content.aboutTitle = res.data.aboutTitle
+          content.aboutSubtitle = res.data.aboutSubtitle
+          content.aboutParagraph1 = res.data.aboutParagraph1
+          content.aboutParagraph2 = res.data.aboutParagraph2
+          content.serviceTitle = res.data.serviceTitle
+          content.serviceSubtitle = res.data.serviceSubtitle
+          content.serviceParagraph1 = res.data.serviceParagraph1
+          content.serviceSubtitle2 = res.data.serviceSubtitle2
+          content.serviceParagraph2 = res.data.serviceParagraph2
+        }
+      )
     }
+
     return {
       getContent : getContent,
       setContent : setContent

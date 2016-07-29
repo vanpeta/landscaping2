@@ -56,36 +56,36 @@
     </div>
   </div>
   <div class='about-page-options col l4'>
-    <form name='changeAboutTitle' ng-submit='vm.changeContent()'>
+    <form name='changeAboutTitle' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
-        <input type='text' ng-model='vm.changeContentInput.aboutTitle'>
+        <input type='text' ng-model='newContent.aboutTitle'>
         <label>title</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='changeAboutSubtitle' ng-submit='vm.changeContent()'>
+    <form name='changeAboutSubtitle' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
-        <input type='text' ng-model='vm.changeContentInput.aboutSubtitle'>
+        <input type='text' ng-model='newContent.aboutSubtitle'>
         <label>subtitle</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='changeAboutParagraph1' ng-submit='vm.changeContent()'>
+    <form name='changeAboutParagraph1' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='vm.changeContentInput.aboutParagraph1'></textarea>
+        <textarea type='text' ng-model='newContent.aboutParagraph1'></textarea>
         <label>paragraph 1</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='changeAboutParagraph2' ng-submit='vm.changeContent()'>
+    <form name='changeAboutParagraph2' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='vm.changeContentInput.aboutParagraph2'></textarea>
+        <textarea type='text' ng-model='newContent.aboutParagraph2'></textarea>
         <label>paragraph 2</label>
       </div>
       <div class='col l3'>
@@ -94,45 +94,45 @@
     </form>
   </div>
   <div class='service-page-options col l4'>
-    <form name='serviceServiceTitle' ng-submit='vm.changeContent()'>
+    <form name='serviceServiceTitle' ng-submit='setContent(newContent)'>
       <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='vm.changeContentInput.serviceTitle'>
+        <input type='text' ng-model='newContent.serviceTitle'>
         <label>title</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='changeServiceSubtitle' ng-submit='vm.changeContent()'>
+    <form name='changeServiceSubtitle' ng-submit='setContent(newContent)'>
       <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='vm.changeContentInput.serviceSubtitle'>
+        <input type='text' ng-model='newContent.serviceSubtitle'>
         <label>subtitle</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='changeServiceParagraph1' ng-submit='vm.changeContent()'>
+    <form name='changeServiceParagraph1' ng-submit='setContent(newContent)'>
       <div class='service-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='vm.changeContentInput.serviceParagraph1'></textarea>
+        <textarea type='text' ng-model='newContent.serviceParagraph1'></textarea>
         <label>paragraph1</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='serviceServiceTitle2' ng-submit='vm.changeContent()'>
+    <form name='serviceServiceTitle2' ng-submit='setContent(newContent)'>
       <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='vm.changeContentInput.serviceSubtitle2'>
+        <input type='text' ng-model='newContent.serviceSubtitle2'>
         <label>subtitle 2</label>
       </div>
       <div class='col l3'>
         <button class='btn' type='submit'>Change</button>
       </div>
     </form>
-    <form name='cserviceServiceParagraph2' ng-submit='vm.changeContent()'>
+    <form name='cserviceServiceParagraph2' ng-submit='setContent(newContent)'>
       <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='vm.changeContentInput.serviceParagraph2'></textarea>
+        <textarea type='text' ng-model='newContent.serviceParagraph2'></textarea>
         <label>paragraph 2</label>
       </div>
       <div class='col l3'>

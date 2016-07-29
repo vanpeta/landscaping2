@@ -24,9 +24,9 @@
 
     $scope.setContent = adminService.setContent
     $scope.content = adminService.getContent()
-    $scope.newContent =''
+    $scope.newContent ={}
 
-    vm.changeContent = changeContent
+
     vm.changeContentInput = {}
 
 
@@ -42,29 +42,6 @@
       }
     );
 
-    function changeContent () {
-      var data = vm.changeContentInput
-      console.log(data)
-      $http({
-        method: 'PUT',
-        url: 'api/content',
-        data: data,
-      }).then (
-        function (res) {
-          console.log(res)
-          vm.aboutTitle = res.data.aboutTitle
-          vm.aboutSubtitle = res.data.aboutSubtitle
-          vm.aboutParagraph1 = res.data.aboutParagraph1
-          vm.aboutParagraph2 = res.data.aboutParagraph2
-          vm.serviceTitle = res.data.serviceTitle
-          vm.serviceSubtitle = res.data.serviceSubtitle
-          vm.serviceParagraph1 = res.data.serviceParagraph1
-          vm.serviceSubtitle2 = res.data.serviceSubtitle2
-          vm.serviceParagraph2 = res.data.serviceParagraph2
-          console.log(vm.aboutTitle)
-        }
-      )
-    };
 
 //CREATE Album
     function createAlbum () {
