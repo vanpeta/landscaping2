@@ -2,6 +2,8 @@ var Admin = require('../models/admin');
 require('dotenv').load();
 var nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
+var https = require('https');
+var rp = require('request-promise');
 
 var generator = require('xoauth2').createXOAuth2Generator({
   user: 'vanpeta.developer@gmail.com',
@@ -31,18 +33,33 @@ module.exports = {
 }
 
 function sendEmail(req,res,next) {
-  var mailOptions = {
-    to: 'vanpeta.developer@gmail.com', //REPLACE with Dan's email
-    subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject,
-    text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
+  if(req.body.myRecaptchaResponse === undefined || req.body.myRecaptchaResponse === '' || req.body.myRecaptchaResponse === null) {
+    return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
   }
-  smtpTransport.sendMail(
-    mailOptions,
-
-  function(err) {
-    if (err) next(err);
-    res.json(res.data)
-  })
+  var secretKey = "6LdwUyYTAAAAAI4vXeTGgal8koK5J9UpjKFPBmSR";
+  var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body.myRecaptchaResponse + "&remoteip=" + req.connection.remoteAddress;
+  // Hitting GET request to the URL, Google will respond with success or error scenario.
+  var options = {
+    method: 'POST',
+    uri: verificationUrl,
+    body: req.body.myRecaptchaResponse,
+    json: true
+  };
+  rp(options)
+    .then(function () {
+      var mailOptions = {
+        to: 'vanpeta.developer@gmail.com', //¡¡¡REPLACE with Dan's email!!! <==========
+        subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject,
+        text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
+      }
+      smtpTransport.sendMail(mailOptions, function(err) {
+        if (err) next(err);
+        res.json(res.data)
+      })
+    })
+    .catch(function(err) {
+      res.json(res.data)
+    })
 }
 
 function index(req,res,next) {

@@ -1,4 +1,4 @@
 (function() {
-  angular.module('landscaping', ['ui.router', 'ngResource', 'ngFileUpload']);
+  angular.module('landscaping', ['ui.router', 'ngResource', 'ngFileUpload', 'vcRecaptcha']);
 
 })();

@@ -5,17 +5,27 @@
   .module('landscaping')
   .controller('contactController', contactController)
 
-  contactController.$inject=['$http'];
+  contactController.$inject=['$http','vcRecaptchaService'];
 
-  function contactController($http){
+  function contactController($http, vcRecaptchaService){
     var vm=this;
 
     vm.contactEmail = {}
     vm.sendEmail = sendEmail
     vm.display = ''
     vm.showDisplay = false
+    vm.captchaSuccess = captchaSuccess
+    vm.showbutton = false
+
+    function captchaSuccess (response) {
+      console.log("triggered")
+      if (response) {
+      vm.showbutton = true
+      }
+    }
 
     function sendEmail () {
+      console.log(vm.contactEmail)
       $http({
         method:'POST',
         url: '/sendemail',
