@@ -26,7 +26,7 @@
         <label>caption1</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeCaption2' ng-submit='setContent(newContent)'>
@@ -35,7 +35,7 @@
         <label>caption2</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeCaption3' ng-submit='setContent(newContent)'>
@@ -44,7 +44,7 @@
         <label>caption3</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
   </div>
@@ -53,7 +53,7 @@
       <div>Uploaded Images: {{vm.images.length}}</div>
     </div>
     <div class='col l6'>
-      <button class="waves-effect waves-light btn modal-trigger" data-target="modal-uploadImage">New Image</button>
+      <button class="waves-effect waves-light btn modal-trigger admin" data-target="modal-uploadImage">New Image</button>
     </div>
     <div ng-show='vm.loading' class='center-align'>
       <div class="preloader-wrapper active">
@@ -94,7 +94,7 @@
         <label>title</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeAboutSubtitle' ng-submit='setContent(newContent)'>
@@ -103,7 +103,7 @@
         <label>subtitle</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeAboutParagraph1' ng-submit='setContent(newContent)'>
@@ -112,7 +112,7 @@
         <label>paragraph 1</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeAboutParagraph2' ng-submit='setContent(newContent)'>
@@ -121,7 +121,7 @@
         <label>paragraph 2</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
   </div>
@@ -132,7 +132,7 @@
         <label>title</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeServiceSubtitle' ng-submit='setContent(newContent)'>
@@ -141,7 +141,7 @@
         <label>subtitle</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='changeServiceParagraph1' ng-submit='setContent(newContent)'>
@@ -150,7 +150,7 @@
         <label>paragraph1</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='serviceServiceTitle2' ng-submit='setContent(newContent)'>
@@ -159,7 +159,7 @@
         <label>subtitle 2</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
     <form name='cserviceServiceParagraph2' ng-submit='setContent(newContent)'>
@@ -168,7 +168,7 @@
         <label>paragraph 2</label>
       </div>
       <div class='col l3'>
-        <button class='btn' type='submit'>Change</button>
+        <button class='btn admin' type='submit'>Change</button>
       </div>
     </form>
   </div>
@@ -194,7 +194,7 @@
         <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
         <label>Description (optional)</label>
       </div>
-      <button class="btn" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
+      <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
         ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
         {{vm.imageForm.image.name}}<br>
       <button class="btn modal-close" type="submit">Submit</button>

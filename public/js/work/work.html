@@ -1,33 +1,38 @@
-<div class='center-align'>
-  <h3>Our Work</h3>
-</div>
-<div class='container'>
-  <div class='gallery'>
+ <div class='black-box valign-wrapper' ng-click='vm.closeImg()' ng-show='vm.blackBox'>
+  <img class='enlargedImage valign' src='{{vm.imageLink}}'/>
+ </div>
+ <div ng-show='!vm.blackBox'>
+  <div class='center-align'>
+    <h3>Our Work</h3>
+  </div>
+  <div class='container'>
+    <div class='gallery'>
 
-  <p>{{vm.images.length}} Photos.</p>
-    <div ng-show='vm.loading' class='center-align'>
-      <div class="preloader-wrapper active">
-        <div class="spinner-layer spinner-green-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+    <p>{{vm.images.length}} Photos.</p>
+      <div ng-show='vm.loading' class='center-align'>
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
         </div>
       </div>
+
+
     </div>
 
 
-  </div>
-
-
-  <div id="wrapper">
-    <div id="columns">
-      <div class="pin" ng-repeat='image in vm.images'>
-        <img src='{{image.link}}'/>
-        <p>{{image.description}}</p>
+    <div id="wrapper">
+      <div id="columns">
+        <div class="pin" ng-repeat='image in vm.images'>
+          <img class='personal' ng-click='vm.enlargeImg(image)' src='{{image.link}}'/>
+          <p>{{image.description}}</p>
+        </div>
       </div>
     </div>
   </div>

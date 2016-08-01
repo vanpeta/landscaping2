@@ -21,10 +21,24 @@
     var imageDeletehash =''
     vm.loading = true
     vm.gallery = false
+    vm.blackBox = false
+    vm.enlargeImg = enlargeImg
+    vm.closeImg = closeImg
+    vm.imageLink = ''
 
     $scope.setContent = adminService.setContent
     $scope.content = adminService.getContent()
     $scope.newContent ={}
+
+    function enlargeImg (image) {
+      vm.blackBox = true
+      vm.imageLink = image.link
+    }
+
+    function closeImg () {
+      console.log('triggered closeimg')
+      vm.blackBox = false
+    }
 
 
 
@@ -154,9 +168,6 @@
             console.log(vm.images)
             vm.loading = false
             vm.gallery = true
-            setTimeout(function(){
-              $('.carousel').carousel()
-            },1000)
           }
         )
       },5000)

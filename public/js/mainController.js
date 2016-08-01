@@ -5,11 +5,11 @@
   .module('landscaping')
   .controller('mainController', mainController)
 
-  mainController.$inject=[];
+  mainController.$inject=['$scope','adminService'];
 
-  function mainController(){
-    var vm=this;
-    vm.test="testing"
+  function mainController($scope, adminService){
+
+    $scope.content = adminService.getContent()
 
   }
 })();

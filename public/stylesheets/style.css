@@ -74,8 +74,8 @@
 }
 .pin img {
   width: 100%;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
+/*  border-bottom: 1px solid #ccc;
+*/  padding-bottom: 15px;
   margin-bottom: 5px;
 }
 .pin p {
@@ -100,8 +100,31 @@
   }
 }
 
-
 #columns:hover .pin:not(:hover) {
   opacity: 0.4;
 }
+
+.btn.admin {
+  width: 100%;
+  font-size: 10px;
+  text-align: center;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.black-box {
+  opacity: 1;
+  background-color:#ccc;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
+}
+.enlargedImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
