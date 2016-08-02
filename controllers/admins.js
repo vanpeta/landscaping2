@@ -48,7 +48,7 @@ function sendEmail(req,res,next) {
   rp(options)
     .then(function () {
       var mailOptions = {
-        to: ['vanpeta.developer@gmail.com', 'carlosallendesanz@gmail.com'],//¡¡¡REPLACE with Dan's email!!! <==========
+        to: ['vanpeta.developer@gmail.com', 'scotthansondesign@gmail.com'],//¡¡¡REPLACE with Dan's email!!! <==========
         subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject,
         text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
       }
