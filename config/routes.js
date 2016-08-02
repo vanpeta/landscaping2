@@ -3,6 +3,10 @@ var router = express.Router();
 var adminsController = require ('../controllers/admins');
 var contentController = require ('../controllers/content');
 
+/* GET homepage */
+router.get('/', function(req, res, next) {
+  res.sendfile('public/index.html');
+});
 
 /* API Routes */
 router.route('/api/admins')
@@ -14,7 +18,7 @@ router.route('/api/admins/:id')
   .put(adminsController.update)
   .delete(adminsController.destroy)
 
-/* GET env variables for angular */
+/* GET env variables for front-end */
 router.route('/api/imgurKey')
   .get(adminsController.imgurInfo)
 
@@ -23,13 +27,9 @@ router.route('/api/content')
   .get(contentController.getContent)
   .put(contentController.updateContent)
 
-/* GET homepage */
-router.get('/', function(req, res, next) {
-  res.sendfile('public/index.html');
-});
-router.get('*', function (req, res, next) {
-  res.redirect('/');
-});
+// router.get('*', function (req, res, next) {
+//   res.redirect('/');
+// });
 /* Contact email Route */
 router.route('/sendemail')
   .post(adminsController.sendEmail)
