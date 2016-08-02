@@ -36,7 +36,7 @@ function sendEmail(req,res,next) {
   if(req.body.myRecaptchaResponse === undefined || req.body.myRecaptchaResponse === '' || req.body.myRecaptchaResponse === null) {
     return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
   }
-  var secretKey = "6LdwUyYTAAAAAI4vXeTGgal8koK5J9UpjKFPBmSR";
+  var secretKey = process.env.recaptchaSecretKey;
   var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body.myRecaptchaResponse + "&remoteip=" + req.connection.remoteAddress;
   // Hitting GET request to the URL, Google will respond with success or error scenario.
   var options = {
