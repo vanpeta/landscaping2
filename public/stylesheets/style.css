@@ -126,6 +126,7 @@ nav ul a {
 }
 #footer-links a {
   padding: 0 15px;
+  font-weight: bold;
 }
 .foundicons {
   font-size: 40px;
@@ -133,10 +134,10 @@ nav ul a {
 }
 #image-about {
   width: 100%;
-  padding-top: 80px;
+  padding: 80 0px;
 }
 #image-service {
   width: 100%;
-  padding-top: 80px;
+  padding: 80 0px;
 }
 
