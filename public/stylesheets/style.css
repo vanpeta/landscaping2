@@ -1,11 +1,5 @@
-.about-content-container {
-  height: 400px;
-}
-.about-content {
-  height: 300px;
-}
 #logo {
-  font-size: 20px;
+  font-size: 18px;
 }
 .adminImages {
   max-width: 100%;
@@ -16,14 +10,6 @@
 }
 .images {
   margin-top: 10px;
-}
-.service-content-container {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  height: 100%;
-}
-.service-content {
-  position: abosulte;
 }
 .contact-btn {
   margin-top: 25px;
@@ -126,11 +112,31 @@
   margin-right: auto;
 }
 #sliderCaption1 {
-    position: absolute;
-    top: 45%;
-    left: 20%;
-    width: 60%;
-    color: #FFFFFF;
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  width: 60%;
+  color: #FFFFFF;
 }
-
+h3 {
+  font-weight: bolder !important;
+}
+nav ul a {
+  padding: 0 8px !important;
+}
+#footer-links a {
+  padding: 0 15px;
+}
+.foundicons {
+  font-size: 40px;
+  padding: 0 20px;
+}
+#image-about {
+  width: 100%;
+  padding-top: 80px;
+}
+#image-service {
+  width: 100%;
+  padding-top: 80px;
+}
 

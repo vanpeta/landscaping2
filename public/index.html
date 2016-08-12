@@ -16,52 +16,67 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <! -- Loading reCaptcha -->
-<script
-  src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
-  async defer
-></script>
+    <script
+      src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+      async defer
+    ></script>
+
+    <!-- Loading foundIcons -->
+    <link href='https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css' rel="stylesheet">
 
   </head>
 
   <body>
-    <div class="navbar-fixed" ng-controller='mainController as vm'>
-      <nav>
-        <div class='nav-wrapper green'>
-          <div class='brand-logo center'>
-            <div id='logo'>S & P Hanson Landscaping
-            Professional Landscape Services</div>
+    <header>
+      <div class="navbar-fixed" ng-controller='mainController as vm'>
+        <nav>
+          <div class='nav-wrapper green'>
+            <div class='brand-logo center'>
+              <div id='logo'>S & P Hanson Landscaping
+              Professional Landscape Services</div>
+            </div>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a ui-sref='home' class='home'>Home</a></li>
+              <li><a ui-sref='About'>{{content.aboutTitle}}</a></li>
+              <li><a ui-sref='Work' id='work'>Our Work</a></li>
+              <li><a ui-sref='Service'>{{content.serviceTitle}}</a></li>
+              <li><a ui-sref='Contact'>Contact</a></li>
+            </ul>
           </div>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a ui-sref='home' class='home'>Home</a></li>
-            <li><a ui-sref='About'>{{content.aboutTitle}}</a></li>
-            <li><a ui-sref='Work' id='work'>Our Work</a></li>
-            <li><a ui-sref='Service'>{{content.serviceTitle}}</a></li>
-            <li><a ui-sref='Contact'>Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </header>
 
-    <div ui-view></div>
-    <footer class='page-footer black' ng-controller='mainController as vm'>
+    <main>
+      <div ui-view></div>
+    </main>
+
+    <footer class='page-footer white' ng-controller='mainController as vm'>
       <div class='container'>
+        <div class="row">
+          <div class='icon col l6 offset-l3 black-text center-align'>
+            <i class="foundicons fi-social-facebook"></i>
+            <i class="foundicons fi-social-pinterest"></i>
+            <i class="foundicons fi-social-instagram"></i>
+            <i class="foundicons fi-social-twitter"></i>
+          </div>
+        </div>
         <div class='row'>
-          <div col l4 offset-l4>
-            <a class='white-text center-align' ui-sref='home' class='home'>Home</a>
-            <a class='white-text center-align' ui-sref='About'>{{content.aboutTitle}}</a>
-            <a class='white-text center-align' ui-sref='Work' id='work'>Our Work</a>
-            <a class='white-text center-align' ui-sref='Service'>{{content.serviceTitle}}</a>
-            <a class='white-text center-align' ui-sref='Contact'>Contact</a>
+          <div class='col l6 offset-l3 center-align' id='footer-links'>
+            <a class='black-text' ui-sref='home' class='home'>Home</a>
+            <a class='black-text' ui-sref='About'>{{content.aboutTitle}}</a>
+            <a class='black-text' ui-sref='Work' id='work'>Our Work</a>
+            <a class='black-text' ui-sref='Service'>{{content.serviceTitle}}</a>
+            <a class='black-text' ui-sref='Contact'>Contact</a>
           </div>
         </div>
       </div>
-      <div class='footer-copyright'>
-        <div class='container'>
-          <a class='white-text right-align' target='_blank' href='http://vanpeta.github.io/carlos/'>© vanpeta productions</a>
+      <div class='footer-copyright white'>
+        <div class='container right-align'>
+          <a class='balck-text' target='_blank' href='http://vanpeta.github.io/carlos/'>© vanpeta productions</a>
         </div>
       </div>
     </footer>
-
 
         <!-- Loading Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
