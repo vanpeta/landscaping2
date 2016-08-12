@@ -125,5 +125,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+#sliderCaption1 {
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    width: 60%;
+    color: #FFFFFF;
+}
 
 

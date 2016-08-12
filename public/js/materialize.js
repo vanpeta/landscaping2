@@ -4,7 +4,7 @@ $(document).ready(function(){
     },50)
   });
 
-$("#home").click(function(){
+$(".home").click(function(){
   setTimeout(function(){
     $('.slider').slider();
   },50)

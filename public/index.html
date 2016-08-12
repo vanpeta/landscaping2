@@ -27,12 +27,12 @@
     <div class="navbar-fixed" ng-controller='mainController as vm'>
       <nav>
         <div class='nav-wrapper green'>
-          <div class='brand-logo'>
+          <div class='brand-logo center'>
             <div id='logo'>S & P Hanson Landscaping
             Professional Landscape Services</div>
           </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a ui-sref='home' id='home'>Home</a></li>
+            <li><a ui-sref='home' class='home'>Home</a></li>
             <li><a ui-sref='About'>{{content.aboutTitle}}</a></li>
             <li><a ui-sref='Work' id='work'>Our Work</a></li>
             <li><a ui-sref='Service'>{{content.serviceTitle}}</a></li>
@@ -43,6 +43,24 @@
     </div>
 
     <div ui-view></div>
+    <footer class='page-footer black' ng-controller='mainController as vm'>
+      <div class='container'>
+        <div class='row'>
+          <div col l4 offset-l4>
+            <a class='white-text center-align' ui-sref='home' class='home'>Home</a>
+            <a class='white-text center-align' ui-sref='About'>{{content.aboutTitle}}</a>
+            <a class='white-text center-align' ui-sref='Work' id='work'>Our Work</a>
+            <a class='white-text center-align' ui-sref='Service'>{{content.serviceTitle}}</a>
+            <a class='white-text center-align' ui-sref='Contact'>Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class='footer-copyright'>
+        <div class='container'>
+          <a class='white-text right-align' target='_blank' href='http://vanpeta.github.io/carlos/'>© vanpeta productions</a>
+        </div>
+      </div>
+    </footer>
 
 
         <!-- Loading Angular -->
