@@ -140,4 +140,8 @@ nav ul a {
   width: 100%;
   padding: 80 0px;
 }
+#sign {
+  font-size: 10px;
+  padding-right: 10px;
+}
 
