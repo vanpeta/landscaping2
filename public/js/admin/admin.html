@@ -53,7 +53,7 @@
       <div>Uploaded Images: {{vm.images.length}}</div>
     </div>
     <div class='col l6'>
-      <button class="waves-effect waves-light btn modal-trigger admin" data-target="modal-uploadImage">New Image</button>
+      <button class="waves-effect waves-light btn modal-trigger admin" data-target="modal-uploadImage" ng-click='vm.modalUploadImg()'>New Image</button>
     </div>
     <div ng-show='vm.loading' class='center-align'>
       <div class="preloader-wrapper active">

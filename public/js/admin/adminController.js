@@ -25,6 +25,7 @@
     vm.enlargeImg = enlargeImg
     vm.closeImg = closeImg
     vm.imageLink = ''
+    vm.modalUploadImg = modalUploadImg
 
     $scope.setContent = adminService.setContent
     $scope.content = adminService.getContent()
@@ -38,6 +39,12 @@
     function closeImg () {
       console.log('triggered closeimg')
       vm.blackBox = false
+    }
+
+    function modalUploadImg () {
+      setTimeout(function(){
+        $('.modal-trigger').leanModal();
+      },50)
     }
 
 

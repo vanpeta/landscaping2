@@ -36,7 +36,7 @@
               Professional Landscape Services</div>
             </div>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a ui-sref='home' class='home'>Home</a></li>
+              <li><a ui-sref='home' ng-click='vm.slider()'>Home</a></li>
               <li><a ui-sref='About'>{{content.aboutTitle}}</a></li>
               <li><a ui-sref='Work' id='work'>Our Work</a></li>
               <li><a ui-sref='Service'>{{content.serviceTitle}}</a></li>
@@ -63,7 +63,7 @@
         </div>
         <div class='row'>
           <div class='col l6 offset-l3 center-align' id='footer-links'>
-            <a class='black-text' ui-sref='home' class='home'>Home</a>
+            <a class='black-text' ui-sref='home' ng-click='vm.slider()'>Home</a>
             <a class='black-text' ui-sref='About'>{{content.aboutTitle}}</a>
             <a class='black-text' ui-sref='Work' id='work'>Our Work</a>
             <a class='black-text' ui-sref='Service'>{{content.serviceTitle}}</a>
