@@ -118,12 +118,11 @@ function update (req,res,next) {
   console.log(req.params.id);
   Admin.findById(id, function(err, admin) {
     if (err) next(err);
-    admin.username = req.body.username;
+    admin.admin_name = req.body.admin_name;
     admin.email = req.body.email;
-    admin.favorites = req.body.favorites;
-    admin.save(function(err, updatedUser) {
+    admin.save(function(err, updatedAdmin) {
       if (err) next(err);
-      res.json(updatedUser)
+      res.json(updatedAdmin)
     });
   });
 };

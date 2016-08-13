@@ -4,20 +4,20 @@ var Admin = require('../models/admin');
 var Content = require('../models/content');
 
 var admins = [{admin_name: 'Testing Admin',
-              email: 'carlos@email.com'}];
+              email: 'test@email.com'}];
 
-// Admin.remove({}, function (err) {
-//   if (err) console.log(err);
-//   Admin.create(admins, function(err, admins) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("Database seeded with " + admins.length + " admins.");
-//       mongoose.connection.close();
-//     }
-//     process.exit();
-//   });
-// });
+Admin.remove({}, function (err) {
+  if (err) console.log(err);
+  Admin.create(admins, function(err, admins) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Database seeded with " + admins.length + " admins.");
+      mongoose.connection.close();
+    }
+    process.exit();
+  });
+});
 
 
 var content = {
@@ -35,15 +35,15 @@ var content = {
   serviceParagraph2: 'Not only are we known for our superior installation services, but we have also developed an outstanding reputation for our superior landscape maintenance and horticultural services.'
 };
 
-Content.remove({}, function (err) {
-  if (err) console.log(err);
-  Content.create(content, function(err, content) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Database seeded with content.");
-      mongoose.connection.close();
-    }
-    process.exit();
-  });
-});
+// Content.remove({}, function (err) {
+//   if (err) console.log(err);
+//   Content.create(content, function(err, content) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("Database seeded with content.");
+//       mongoose.connection.close();
+//     }
+//     process.exit();
+//   });
+// });

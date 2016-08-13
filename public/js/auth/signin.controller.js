@@ -28,7 +28,7 @@
           // on success
           function(decodedToken) {
             $log.info('Logged in!', decodedToken);
-            $state.go('map');
+            $state.go('Admin');
           },
           // on error
           function(err) {

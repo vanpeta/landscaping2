@@ -46,7 +46,7 @@ function create(req, res, next) {
    var message = 'Missing required fields: email and password';
    return res.status(422).json(message);
  }
- User
+ Admin
    .findOne({email: req.body.email}).exec()
    .then(function(admin) {
      if (!admin || !admin.verifyPasswordSync(req.body.password)) {

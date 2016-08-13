@@ -23,9 +23,38 @@
         <p>
           <strong>
             If you are not a user yet,
-            <a class="underline modal-close" ui-sref="signup"><u>Sign Up</u></a>.
+            <a class="underline modal-trigger" data-target="modal-Sing-up"><u>Sign Up</u></a>.
           </strong>
         </p>
+      </div>
+    </div>
+    <div class="modal row" id="modal-Sing-up">
+      <div class="modal-content col l10 offset-l1">
+        <form ng-submit="vm.submitSignUp();">
+          <h4 id="signup">Sign Up</h4>
+          <div class="input-field">
+            <input ng-model="vm.signUp.admin_name" type="text" id="admin_name">
+            <label for="admin_name">admin name</label>
+          </div>
+
+          <div class="input-field">
+            <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="validate" id="email">
+            <label for="email">email address</label>
+            <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
+          </div>
+
+          <div class="input-field">
+            <input ng-model="vm.signUp.password" type="password" class="validate" id="Password">
+            <label for="Password">Password</label>
+          </div>
+          <div class="input-field">
+            <input ng-model="vm.signUp.passwordConfirmation" type="password" class="validate" id="Password2">
+            <label for="Password2">Password confirmation</label>
+          </div>
+          <div class='center-align'>
+            <button type="submit" class="btn waves-effect modal-close">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
