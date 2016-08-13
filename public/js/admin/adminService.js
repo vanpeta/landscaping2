@@ -9,6 +9,15 @@ adminService.$inject = ['$http']
 
 function adminService ($http) {
 
+  function create(data) {
+    var promise = $http({
+      method: 'POST',
+      url:    '/api/admins',
+      data:   data
+      });
+    return promise;
+  }
+
     var content ={
     caption1 : '',
     caption2 : '',
@@ -79,8 +88,10 @@ function adminService ($http) {
 
     return {
       getContent : getContent,
-      setContent : setContent
+      setContent : setContent,
+      create: create
     }
+
 
 
     // function changeContent (data) {

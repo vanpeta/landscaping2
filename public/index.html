@@ -24,6 +24,9 @@
     <!-- Loading foundIcons -->
     <link href='https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css' rel="stylesheet">
 
+    <!-- Loading jwd-decode for authentication -->
+    <script src="js/vendor/jwt-decode.2.0.1.js"></script>
+
   </head>
 
   <body>
@@ -101,6 +104,17 @@
 
     <!-- Loading local files -->
     <script src="js/app.js" charset="utf-8"></script>
+
+    <!-- Loading authentication files -->
+    <script src="js/config/app.debug.js"></script>
+    <script src="js/config/app.httpInterceptors.js"></script>
+    <script src="js/config/jsonHeaders.service.js"></script>
+    <script src="js/config/tokenSigning.service.js"></script>
+    <script src="js/config/authErrorRedirect.service.js"></script>
+    <script src="js/auth/auth.service.js" charset="utf-8"></script>
+    <script src="js/auth/signin.controller.js" charset="utf-8"></script>
+    <script src="js/auth/token.service.js" charset="utf-8"></script>
+
     <script src="js/config/routes.js" charset="utf-8"></script>
     <script src="js/mainController.js" charset="utf-8"></script>
     <script src="js/admin/adminController.js" charset="utf-8"></script>

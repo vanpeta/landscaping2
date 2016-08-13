@@ -2,6 +2,8 @@ var express = require ('express');
 var router = express.Router();
 var adminsController = require ('../controllers/admins');
 var contentController = require ('../controllers/content');
+// Require token authentication.
+var token = require('../config/token_auth');
 
 /* GET homepage */
 router.get('/', function(req, res, next) {
@@ -12,11 +14,16 @@ router.get('/', function(req, res, next) {
 router.route('/api/admins')
   .get(adminsController.index)
   .post(adminsController.create)
-
+router.route('/api/admins/me')
+  .get(token.authenticate, adminsController.me)
 router.route('/api/admins/:id')
   .get(adminsController.show)
   .put(adminsController.update)
   .delete(adminsController.destroy)
+
+  /* Auth Routes */
+router.route('/api/token')
+  .post(token.create);
 
 /* GET env variables for front-end */
 router.route('/api/imgurKey')

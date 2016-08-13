@@ -28,8 +28,8 @@ module.exports = {
   update: update,
   destroy: destroy,
   imgurInfo: imgurInfo,
-  sendEmail:sendEmail
-  // me: me
+  sendEmail:sendEmail,
+  me: me
 }
 
 function sendEmail(req,res,next) {
@@ -102,16 +102,16 @@ function create(req, res, next) {
     });
 };
 
-// function me(req, res, next) {
-//   Admin
-//     .findOne({_id: req.decoded._id}).exec()
-//     .then(function(admin) {
-//       res.json(admin);
-//     })
-//     .catch(function(err) {
-//       next(err);
-//     });
-// };
+function me(req, res, next) {
+  Admin
+    .findOne({_id: req.decoded._id}).exec()
+    .then(function(admin) {
+      res.json(admin);
+    })
+    .catch(function(err) {
+      next(err);
+    });
+};
 
 function update (req,res,next) {
   var id = req.params.id;

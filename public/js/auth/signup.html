@@ -1,0 +1,30 @@
+<!-- sign-up-form -->
+
+<div class="row col s4 black" id="signup-div">
+
+
+  <form class="col s4 offset-s1" ng-submit="vm.submitSignUp();">
+    <h2 class="deep-orange-text text=accent-3" id="signup">Sign Up</h2>
+    <div class="input-field">
+      <input ng-model="vm.signUp.adminname" type="text" class="validate deep-orange-text" id="adminname">
+      <label for="adminname">adminname</label>
+    </div>
+
+    <div class="input-field">
+      <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="validate deep-orange-text" id="email">
+      <label for="email">email address</label>
+      <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
+    </div>
+
+    <div class="input-field">
+      <input ng-model="vm.signUp.password" type="password" class="validate deep-orange-text" id="Password">
+      <label for="Password">Password</label>
+    </div>
+    <div class="input-field">
+      <input ng-model="vm.signUp.passwordConfirmation" type="password" class="validate deep-orange-text" id="Password2">
+      <label for="Password2">Password confirmation</label>
+    </div>
+    <button type="submit" class="btn deep-orange accent-3 waves-effect">Submit</button>
+  </form>
+
+</div>
