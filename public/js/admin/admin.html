@@ -1,204 +1,238 @@
-<div class='row'>
-  <div class='center-align col l12'>
-    <h3>Admin Console</h3>
+<div ng-hide="vm.authService.isLoggedIn()">
+  <div ng-controller="SignInController as vm">
+    <div class='row'>
+      <div class='col l4 offset-l4'>
+        <h4>Sign In</h4>
+        <form ng-submit="vm.submitLogIn();" name="signInForm" novalidate>
+          <div class="input-field">
+            <input ng-model="vm.logIn.email" type="email" ng-model="email" name="email" required class="validate" id="email">
+            <label for="Email">email</label>
+          </div>
+          <div class="input-field">
+            <input ng-model="vm.logIn.password" type="password" ng-model="password" name="password" required class="validate" id="Password">
+            <label for="password">Password</label>
+          </div>
+          <div class='center-align'>
+            <button type="submit" ng-disabled="signInForm.$invalid" class="btn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col lo4 offset-l4'>
+        <p>
+          <strong>
+            If you are not a user yet,
+            <a class="underline modal-close" ui-sref="signup"><u>Sign Up</u></a>.
+          </strong>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class='center-align col l3'>
-    <h5>Home Page</h5>
+<div ng-show="vm.authService.isLoggedIn()">
+  <div class='row'>
+    <div class='center-align col l12'>
+      <h3>Admin Console</h3>
+    </div>
   </div>
-  <div class='center-align col l3'>
-    <h5>Our Work Page</h5>
+  <div class="row">
+    <div class='center-align col l3'>
+      <h5>Home Page</h5>
+    </div>
+    <div class='center-align col l3'>
+      <h5>Our Work Page</h5>
+    </div>
+    <div class='center-align col l3'>
+      <h5>{{content.aboutTitle}} Page</h5>
+    </div>
+    <div class='center-align col l3'>
+      <h5>{{content.serviceTitle}} Page</h5>
+    </div>
   </div>
-  <div class='center-align col l3'>
-    <h5>{{content.aboutTitle}} Page</h5>
-  </div>
-  <div class='center-align col l3'>
-    <h5>{{content.serviceTitle}} Page</h5>
-  </div>
-</div>
 
-<div class='row'>
-  <div class='home-page-options col l3'>
-    <form name='changeCaption1' ng-submit='setContent(newContent)'>
-      <div class='home-page-options-caption1 input-field col l9'>
-        <input type='text' ng-model='newContent.caption1'>
-        <label>caption1</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeCaption2' ng-submit='setContent(newContent)'>
-      <div class='home-page-options-caption2 input-field col l9'>
-        <input type='text' ng-model='newContent.caption2'>
-        <label>caption2</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeCaption3' ng-submit='setContent(newContent)'>
-      <div class='home-page-options-caption3 input-field col l9'>
-        <input type='text' ng-model='newContent.caption3'>
-        <label>caption3</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-  </div>
-  <div class='images-grid col l3'>
-    <div class='col l6'>
-      <div>Uploaded Images: {{vm.images.length}}</div>
+  <div class='row'>
+    <div class='home-page-options col l3'>
+      <form name='changeCaption1' ng-submit='setContent(newContent)'>
+        <div class='home-page-options-caption1 input-field col l9'>
+          <input type='text' ng-model='newContent.caption1'>
+          <label>caption1</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeCaption2' ng-submit='setContent(newContent)'>
+        <div class='home-page-options-caption2 input-field col l9'>
+          <input type='text' ng-model='newContent.caption2'>
+          <label>caption2</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeCaption3' ng-submit='setContent(newContent)'>
+        <div class='home-page-options-caption3 input-field col l9'>
+          <input type='text' ng-model='newContent.caption3'>
+          <label>caption3</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
     </div>
-    <div class='col l6'>
-      <button class="waves-effect waves-light btn modal-trigger admin" data-target="modal-uploadImage" ng-click='vm.modalUploadImg()'>New Image</button>
-    </div>
-    <div ng-show='vm.loading' class='center-align'>
-      <div class="preloader-wrapper active">
-        <div class="spinner-layer spinner-green-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
+    <div class='images-grid col l3'>
+      <div class='col l6'>
+        <div>Uploaded Images: {{vm.images.length}}</div>
+      </div>
+      <div class='col l6'>
+        <button class="waves-effect waves-light btn modal-trigger admin" data-target="modal-uploadImage" ng-click='vm.modalUploadImg()'>New Image</button>
+      </div>
+      <div ng-show='vm.loading' class='center-align'>
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-          <div class="gap-patch">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
+        </div>
+      </div>
+      <div class='images'>
+        <div ng-show='vm.gallery' ng-repeat='image in vm.images' class="col l12">
+          <div class='card small'>
+            <div class='card-image'>
+              <img src='{{image.link}}' class='adminImages'>
+              <spam class='card-title'>{{image.title}}</spam>
+            </div>
+            <div class='card-content'>
+              <p>{{image.description}}</p>
+            </div>
+            <div class="card-action">
+              <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class='images'>
-      <div ng-show='vm.gallery' ng-repeat='image in vm.images' class="col l12">
-        <div class='card small'>
-          <div class='card-image'>
-            <img src='{{image.link}}' class='adminImages'>
-            <spam class='card-title'>{{image.title}}</spam>
-          </div>
-          <div class='card-content'>
-            <p>{{image.description}}</p>
-          </div>
-          <div class="card-action">
-            <i class="material-icons pointer" ng-click='vm.deleteImage(image)'>delete</i>
-          </div>
+    <div class='about-page-options col l3'>
+      <form name='changeAboutTitle' ng-submit='setContent(newContent)'>
+        <div class='about-page-options-title input-field col l9'>
+          <input type='text' ng-model='newContent.aboutTitle'>
+          <label>title</label>
         </div>
-      </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeAboutSubtitle' ng-submit='setContent(newContent)'>
+        <div class='about-page-options-title input-field col l9'>
+          <input type='text' ng-model='newContent.aboutSubtitle'>
+          <label>subtitle</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeAboutParagraph1' ng-submit='setContent(newContent)'>
+        <div class='about-page-options-title input-field col l9'>
+          <textarea type='text' ng-model='newContent.aboutParagraph1'></textarea>
+          <label>paragraph 1</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeAboutParagraph2' ng-submit='setContent(newContent)'>
+        <div class='about-page-options-title input-field col l9'>
+          <textarea type='text' ng-model='newContent.aboutParagraph2'></textarea>
+          <label>paragraph 2</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+    </div>
+    <div class='service-page-options col l3'>
+      <form name='serviceServiceTitle' ng-submit='setContent(newContent)'>
+        <div class='service-page-options-title input-field col l9'>
+          <input type='text' ng-model='newContent.serviceTitle'>
+          <label>title</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeServiceSubtitle' ng-submit='setContent(newContent)'>
+        <div class='service-page-options-title input-field col l9'>
+          <input type='text' ng-model='newContent.serviceSubtitle'>
+          <label>subtitle</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='changeServiceParagraph1' ng-submit='setContent(newContent)'>
+        <div class='service-page-options-title input-field col l9'>
+          <textarea type='text' ng-model='newContent.serviceParagraph1'></textarea>
+          <label>paragraph1</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='serviceServiceTitle2' ng-submit='setContent(newContent)'>
+        <div class='service-page-options-title input-field col l9'>
+          <input type='text' ng-model='newContent.serviceSubtitle2'>
+          <label>subtitle 2</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
+      <form name='cserviceServiceParagraph2' ng-submit='setContent(newContent)'>
+        <div class='about-page-options-title input-field col l9'>
+          <textarea type='text' ng-model='newContent.serviceParagraph2'></textarea>
+          <label>paragraph 2</label>
+        </div>
+        <div class='col l3'>
+          <button class='btn admin' type='submit'>Change</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class='about-page-options col l3'>
-    <form name='changeAboutTitle' ng-submit='setContent(newContent)'>
-      <div class='about-page-options-title input-field col l9'>
-        <input type='text' ng-model='newContent.aboutTitle'>
-        <label>title</label>
+  <!--     <div class='about-page-options-subtitle input-field'>
       </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
+      <div class='about-page-options-paragraph1 input-field'>
       </div>
-    </form>
-    <form name='changeAboutSubtitle' ng-submit='setContent(newContent)'>
-      <div class='about-page-options-title input-field col l9'>
-        <input type='text' ng-model='newContent.aboutSubtitle'>
-        <label>subtitle</label>
+      <div class='about-page-options-paragraph2 input-field'>
       </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeAboutParagraph1' ng-submit='setContent(newContent)'>
-      <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='newContent.aboutParagraph1'></textarea>
-        <label>paragraph 1</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeAboutParagraph2' ng-submit='setContent(newContent)'>
-      <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='newContent.aboutParagraph2'></textarea>
-        <label>paragraph 2</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-  </div>
-  <div class='service-page-options col l3'>
-    <form name='serviceServiceTitle' ng-submit='setContent(newContent)'>
-      <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='newContent.serviceTitle'>
-        <label>title</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeServiceSubtitle' ng-submit='setContent(newContent)'>
-      <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='newContent.serviceSubtitle'>
-        <label>subtitle</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='changeServiceParagraph1' ng-submit='setContent(newContent)'>
-      <div class='service-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='newContent.serviceParagraph1'></textarea>
-        <label>paragraph1</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='serviceServiceTitle2' ng-submit='setContent(newContent)'>
-      <div class='service-page-options-title input-field col l9'>
-        <input type='text' ng-model='newContent.serviceSubtitle2'>
-        <label>subtitle 2</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-    <form name='cserviceServiceParagraph2' ng-submit='setContent(newContent)'>
-      <div class='about-page-options-title input-field col l9'>
-        <textarea type='text' ng-model='newContent.serviceParagraph2'></textarea>
-        <label>paragraph 2</label>
-      </div>
-      <div class='col l3'>
-        <button class='btn admin' type='submit'>Change</button>
-      </div>
-    </form>
-  </div>
-</div>
-<!--     <div class='about-page-options-subtitle input-field'>
     </div>
-    <div class='about-page-options-paragraph1 input-field'>
-    </div>
-    <div class='about-page-options-paragraph2 input-field'>
-    </div>
-  </div>
-</div> -->
+  </div> -->
 
-<div id='modal-uploadImage' class='modal'>
-  <div class='modal-content'>
-    <h3>Upload New Image</h3>
-    <form name="uploadImage" ng-submit='vm.sendToImgur()'>
-      <div class='input-field'>
-        <input ng-model='vm.imageForm.title' type='text'>
-        <label>Title (optional)</label>
-      </div>
-      <div class='input-field'>
-        <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
-        <label>Description (optional)</label>
-      </div>
-      <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
-        ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
-        {{vm.imageForm.image.name}}<br>
-      <button class="btn modal-close" type="submit">Submit</button>
-      <button class='btn modal-close'>Cancel</button>
-    </form>
+  <div id='modal-uploadImage' class='modal'>
+    <div class='modal-content'>
+      <h3>Upload New Image</h3>
+      <form name="uploadImage" ng-submit='vm.sendToImgur()'>
+        <div class='input-field'>
+          <input ng-model='vm.imageForm.title' type='text'>
+          <label>Title (optional)</label>
+        </div>
+        <div class='input-field'>
+          <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
+          <label>Description (optional)</label>
+        </div>
+        <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
+          ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
+          {{vm.imageForm.image.name}}<br>
+        <button class="btn modal-close" type="submit">Submit</button>
+        <button class='btn modal-close'>Cancel</button>
+      </form>
+    </div>
   </div>
 </div>

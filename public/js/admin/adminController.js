@@ -5,9 +5,9 @@
   .module('landscaping')
   .controller('adminController', adminController)
 
-  adminController.$inject=['$http', 'Upload', 'adminService', '$scope'];
+  adminController.$inject=['$http', 'Upload', 'adminService', '$scope', 'authService'];
 
-  function adminController($http, Upload, adminService, $scope){
+  function adminController($http, Upload, adminService, $scope, authService){
     var vm=this;
     vm.test="testing"
     vm.ImageForm ={}
@@ -26,6 +26,8 @@
     vm.closeImg = closeImg
     vm.imageLink = ''
     vm.modalUploadImg = modalUploadImg
+    vm.authService = authService;
+
 
     $scope.setContent = adminService.setContent
     $scope.content = adminService.getContent()
