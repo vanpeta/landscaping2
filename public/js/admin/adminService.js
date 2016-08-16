@@ -34,7 +34,6 @@ function adminService ($http) {
     }
 
     function loadContent () {
-      console.log('load content triggered')
       $http({
         method:'GET',
         url:'/api/content'

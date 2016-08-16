@@ -5,9 +5,9 @@
   .module('landscaping')
   .controller('adminController', adminController)
 
-  adminController.$inject=['$http', 'Upload', 'adminService', '$scope', 'authService'];
+  adminController.$inject=['$http', 'Upload', 'adminService', '$scope', 'authService', 'imgurService'];
 
-  function adminController($http, Upload, adminService, $scope, authService){
+  function adminController($http, Upload, adminService, $scope, authService, imgurService){
     var vm=this;
     vm.test="testing"
     vm.ImageForm ={}

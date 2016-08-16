@@ -28,41 +28,16 @@
         </p>
       </div>
     </div>
-    <div class="modal row" id="modal-Sing-up">
-      <div class="modal-content col l10 offset-l1">
-        <form ng-submit="vm.submitSignUp();">
-          <h4 id="signup">Sign Up</h4>
-          <div class="input-field">
-            <input ng-model="vm.signUp.admin_name" type="text" id="admin_name">
-            <label for="admin_name">admin name</label>
-          </div>
-
-          <div class="input-field">
-            <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="validate" id="email">
-            <label for="email">email address</label>
-            <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
-          </div>
-
-          <div class="input-field">
-            <input ng-model="vm.signUp.password" type="password" class="validate" id="Password">
-            <label for="Password">Password</label>
-          </div>
-          <div class="input-field">
-            <input ng-model="vm.signUp.passwordConfirmation" type="password" class="validate" id="Password2">
-            <label for="Password2">Password confirmation</label>
-          </div>
-          <div class='center-align'>
-            <button type="submit" class="btn waves-effect modal-close">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
   </div>
 </div>
 <div ng-show="vm.authService.isLoggedIn()">
   <div class='row'>
-    <div class='center-align col l12'>
+    <div class='right-align col l8'>
       <h3>Admin Console</h3>
+    </div>
+    <div class='right-align col l4'>
+      <button class="modal-trigger btn" data-target="modal-Sing-up">Create New Admin</button>
+      <button ng-click= "vm.authService.logOut()" ui-sref="home" type="button" class="btn">Sign out</button>
     </div>
   </div>
   <div class="row">
@@ -243,25 +218,55 @@
       </div>
     </div>
   </div> -->
-
-  <div id='modal-uploadImage' class='modal'>
-    <div class='modal-content'>
-      <h3>Upload New Image</h3>
-      <form name="uploadImage" ng-submit='vm.sendToImgur()'>
-        <div class='input-field'>
-          <input ng-model='vm.imageForm.title' type='text'>
-          <label>Title (optional)</label>
-        </div>
-        <div class='input-field'>
-          <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
-          <label>Description (optional)</label>
-        </div>
-        <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
-          ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
-          {{vm.imageForm.image.name}}<br>
-        <button class="btn modal-close" type="submit">Submit</button>
-        <button class='btn modal-close'>Cancel</button>
-      </form>
-    </div>
+</div>
+<div id='modal-uploadImage' class='modal'>
+  <div class='modal-content'>
+    <h3>Upload New Image</h3>
+    <form name="uploadImage" ng-submit='vm.sendToImgur()'>
+      <div class='input-field'>
+        <input ng-model='vm.imageForm.title' type='text'>
+        <label>Title (optional)</label>
+      </div>
+      <div class='input-field'>
+        <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
+        <label>Description (optional)</label>
+      </div>
+      <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
+        ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
+        {{vm.imageForm.image.name}}<br>
+      <button class="btn modal-close" type="submit">Submit</button>
+      <button class='btn modal-close'>Cancel</button>
+    </form>
   </div>
 </div>
+
+<div class="modal row" id="modal-Sing-up">
+  <div class="modal-content col l10 offset-l1">
+    <form ng-submit="vm.submitSignUp();">
+      <h4 id="signup">Sign Up</h4>
+      <div class="input-field">
+        <input ng-model="vm.signUp.admin_name" type="text" id="admin_name">
+        <label for="admin_name">admin name</label>
+      </div>
+
+      <div class="input-field">
+        <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="validate" id="email">
+        <label for="email">email address</label>
+        <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
+      </div>
+
+      <div class="input-field">
+        <input ng-model="vm.signUp.password" type="password" class="validate" id="Password">
+        <label for="Password">Password</label>
+      </div>
+      <div class="input-field">
+        <input ng-model="vm.signUp.passwordConfirmation" type="password" class="validate" id="Password2">
+        <label for="Password2">Password confirmation</label>
+      </div>
+      <div class='center-align'>
+        <button type="submit" class="btn waves-effect modal-close">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
