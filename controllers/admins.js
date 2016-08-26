@@ -6,7 +6,7 @@ var https = require('https');
 var rp = require('request-promise');
 
 var generator = require('xoauth2').createXOAuth2Generator({
-  user: 'vanpeta.developer@gmail.com',
+  user: process.env.developerEmail,
   clientId: process.env.Google_OAuth_client_ID,
   clientSecret: process.env.Google_OAuth_client_secret,
   refreshToken:process.env.Google_Refresh_Token,
@@ -27,7 +27,6 @@ module.exports = {
   create: create,
   update: update,
   destroy: destroy,
-  imgurInfo: imgurInfo,
   sendEmail:sendEmail,
   me: me
 }
@@ -48,7 +47,7 @@ function sendEmail(req,res,next) {
   rp(options)
     .then(function () {
       var mailOptions = {
-        to: ['vanpeta.developer@gmail.com', 'scotthansondesign@gmail.com'],//¡¡¡REPLACE with Dan's email!!! <==========
+        to: [process.env.developerEmail, process.env.ownerEmail],//¡¡¡REPLACE with Dan's email!!! <==========
         subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject,
         text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
       }
@@ -133,15 +132,6 @@ function destroy (req,res,next) {
     if (err) next(err);
     res.json({message: "Admin deleted"});
   });
-};
-
-function imgurInfo (req, res, next) {
-  imgurKeys={
-    imgurClient: process.env.IMGUR_Client_ID,
-    albumId: process.env.albumId,
-    albumDeletehash: process.env.albumDeletehash
-  }
-  res.json(imgurKeys)
 };
 
 

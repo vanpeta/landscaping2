@@ -26,11 +26,7 @@ router.route('/api/admins/:id')
 router.route('/api/token')
   .post(token.create);
 
-/* GET env variables for front-end */
-router.route('/api/imgurKey')
-  .get(adminsController.imgurInfo)
-
-/* Contact email Route */
+/* Content Database routes */
 router.route('/api/content')
   .get(contentController.getContent)
   .put(contentController.updateContent)
@@ -46,10 +42,6 @@ router.route('/imgur/upload')
 router.route('/imgur/delete')
   .get(imgurController.deleteImage)
 
-
-// router.get('*', function (req, res, next) {
-//   res.redirect('/');
-// });
 /* Contact email Route */
 router.route('/sendemail')
   .post(adminsController.sendEmail)
