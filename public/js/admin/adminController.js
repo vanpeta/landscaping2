@@ -119,19 +119,30 @@
     function deleteImage (image) {
       var index = vm.images.indexOf(image)
       vm.images.splice(index,1);
-      var imagesIds = []
+      var imageDeletehash = image.deletehash
+      var ids = [];
       vm.images.forEach(function(e) {
-        imagesIds.push(e.id)
+        ids.push(e.id)
       })
-      var promise = $http({
-        method: 'PUT',
-        url: 'https://api.imgur.com/3/album/'+albumDeletehash,
-        headers: {'Authorization': 'Client-ID '+imgurClient},
-        data:{'ids': imagesIds}
-      }).then (
-        function (res) {
-        }
-      )
+      imgurService
+        .deleteImage(ids)
+        .then(function(res) {
+          console.log(res)
+        })
+
+      // var imagesIds = []
+      // vm.images.forEach(function(e) {
+      //   imagesIds.push(e.id)
+      // })
+      // var promise = $http({
+      //   method: 'PUT',
+      //   url: 'https://api.imgur.com/3/album/'+albumDeletehash,
+      //   headers: {'Authorization': 'Client-ID '+imgurClient},
+      //   data:{'ids': imagesIds}
+      // }).then (
+      //   function (res) {
+      //   }
+      // )
     }
 
   }

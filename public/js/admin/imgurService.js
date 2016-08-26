@@ -31,7 +31,7 @@ imgurService.$inject = ['$http']
           description: description
           }
       })
-      return promise
+      return promise;
     }
 
     // GET Album images
@@ -40,7 +40,7 @@ imgurService.$inject = ['$http']
         method: 'GET',
         url: '/imgur'
       });
-      return promise
+      return promise;
     };
 
     function addImageToAlbum (ids) {
@@ -49,14 +49,24 @@ imgurService.$inject = ['$http']
         url: '/imgur',
         data: {ids: ids}
       });
-      return promise
-    }
+      return promise;
+    };
+
+    function deleteImage (ids) {
+      var promise = $http({
+        method: 'GET',
+        url: '/imgur/delete',
+        params: {ids: ids}
+      })
+      return promise;
+    };
 
     return {
       uploadImage: uploadImage,
       getAlbumImages: getAlbumImages,
       convertTo64: convertTo64,
-      addImageToAlbum: addImageToAlbum
+      addImageToAlbum: addImageToAlbum,
+      deleteImage: deleteImage
     }
   }
 })();

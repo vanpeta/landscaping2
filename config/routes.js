@@ -43,6 +43,9 @@ router.route('/imgur')
 router.route('/imgur/upload')
   .post(imgurController.uploadImage)
 
+router.route('/imgur/delete')
+  .get(imgurController.deleteImage)
+
 
 // router.get('*', function (req, res, next) {
 //   res.redirect('/');

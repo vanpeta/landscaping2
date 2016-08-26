@@ -6,7 +6,8 @@ var rp = require('request-promise');
 module.exports = {
   getImages: getImages,
   uploadImage: uploadImage,
-  addImageToAlbum: addImageToAlbum
+  addImageToAlbum: addImageToAlbum,
+  deleteImage: deleteImage
 }
 
 function getImages (req,res,next) {
@@ -56,7 +57,27 @@ function addImageToAlbum (req,res,next) {
     res.json(addImageToAlbumRes)
   })
   .catch(console.error);
-}
+};
+
+function deleteImage (req,res,next) {
+  console.log(req.query.ids)
+  rp({
+    method: 'PUT',
+    url: 'https://api.imgur.com/3/album/'+process.env.albumDeletehash,
+    headers: {
+      'Authorization': 'Client-ID '+process.env.IMGUR_Client_ID
+    },
+    body: {ids: req.query.imageId},
+    json: true
+  })
+  .then(function(deleteImageRes) {
+    res.json(deleteImageRes)
+  })
+  .catch(console.error)
+};
+
+
+
 
 
 
