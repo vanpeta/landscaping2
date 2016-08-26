@@ -65,22 +65,6 @@
 
     showPhotos()
 
-//CREATE Album
-    function createAlbum () {
-      $http({
-        method: 'POST',
-        url: 'https://api.imgur.com/3/album',
-        data: {'title': 'S & P Hanson Landscaping Professional Landscape Services'},
-        headers: {'Authorization': 'Client-ID '+imgurClient}
-      }).then(
-        function (res) {
-          albumId = res.data.data.id
-          albumDeletehash = res.data.data.deletehash
-          console.log(albumId)
-        }
-      )
-    };
-
     function sendToImgur () {
       var title = null;
       var description = null;

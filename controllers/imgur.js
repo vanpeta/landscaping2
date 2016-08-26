@@ -67,7 +67,7 @@ function deleteImage (req,res,next) {
     headers: {
       'Authorization': 'Client-ID '+process.env.IMGUR_Client_ID
     },
-    body: {ids: req.query.imageId},
+    body: {ids: req.query.ids},
     json: true
   })
   .then(function(deleteImageRes) {
