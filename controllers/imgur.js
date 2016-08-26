@@ -1,20 +1,12 @@
 require('dotenv').load();
 var fs = require('fs')
+var https = require('https');
+var rp = require('request-promise');
 
 module.exports = {
   getImages: getImages,
   uploadImage: uploadImage,
-  updateImage: updateImage,
-  addImageToAlbum: addImageToAlbum,
-  to64: to64
-}
-
-var https = require('https');
-var rp = require('request-promise');
-
-function to64 (req,res,next) {
-  console.log (req)
-  return res
+  addImageToAlbum: addImageToAlbum
 }
 
 function getImages (req,res,next) {
@@ -31,6 +23,7 @@ function getImages (req,res,next) {
 };
 
 function uploadImage (req,res,next) {
+  console.log(req.body)
   rp({
     method: 'POST',
     url: 'https://api.imgur.com/3/image',
@@ -48,23 +41,6 @@ function uploadImage (req,res,next) {
   })
 };
 
-function updateImage (req,res,next) {
-  var imageDeletehash = req.query.imageDeletehash
-  rp({
-    method: 'PUT',
-    url:'https://api.imgur.com/3/image/'+imageDeletehash,
-    headers: {
-      'Authorization': 'Client-ID '+process.env.IMGUR_Client_ID
-    },
-    body: req.data,
-    json: true
-  })
-  .then(function(updateImageRes){
-    res.json(updateImageRes)
-  })
-  .catch(console.error);
-};
-
 function addImageToAlbum (req,res,next) {
   rp({
     method: 'PUT',
@@ -72,7 +48,9 @@ function addImageToAlbum (req,res,next) {
     headers: {
       'Authorization': 'Client-ID '+process.env.IMGUR_Client_ID
     },
-    body: req.data
+    body: req.body,
+    json: true
+
   })
   .then(function(addImageToAlbumRes){
     res.json(addImageToAlbumRes)

@@ -63,7 +63,7 @@
         })
     };
 
-    showPhotos ()
+    showPhotos()
 
 //CREATE Album
     function createAlbum () {
@@ -82,59 +82,39 @@
     };
 
     function sendToImgur () {
-      console.log(vm.imageForm.image)
+      var title = null;
+      var description = null;
+      if (vm.imageForm.title) {
+        title = vm.imageForm.title
+      }
+      if (vm.imageForm.description) {
+        description = vm.imageForm.description
+      }
       imgurService
         .convertTo64(vm.imageForm.image)
         .then(function(res){
           imgurService
-            .uploadImage(res)
+            .uploadImage(res, title, description)
             .then(function(res){
               console.log(res)
               var response = res.data.data
               ids.push(response.id)
               imageDeletehash = (response.deletehash)
               console.log("SUCCESS!!! the new image uploaded id is "+response.id)
-              updateImage ()
+              addImageToAlbum(ids)
             })
           })
       }
 
-//UPDATE image with title and description
-    function updateImage () {
-      console.log('updateImage triggered')
-      console.log('this is the title: ' + vm.imageForm.title)
-      console.log('this is the description: ' + vm.imageForm.description)
-      if (vm.imageForm.title || vm.imageForm.description) {
-        var promise = $http({
-          method: 'PUT',
-          url:  '/imgur?imageDeletehash='+imageDeletehash,
-          data: { title : vm.imageForm.title,
-                  description : vm.imageForm.description}
-        });
-        promise.then(
-          function(res) {
-            console.log('image updated')
-            console.log (res)
-            addImageToAlbum ()
-          })
-      }
-    }
 //ADD selected image to Album
     function addImageToAlbum () {
       console.log('addImageToAlbum triggered')
-      var promise = $http({
-        method: 'PUT',
-        url: '/imgur/album',
-        data: {'ids': ids},
-      });
-      promise.then(
-        function(res) {
-          getAlbumImages.getAlbumImages()
-        }
-      )
+      imgurService
+        .addImageToAlbum(ids)
+        .then(
+          showPhotos()
+          )
     }
-
-
 
     function deleteImage (image) {
       var index = vm.images.indexOf(image)

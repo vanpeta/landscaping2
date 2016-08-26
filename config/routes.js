@@ -26,9 +26,6 @@ router.route('/api/admins/:id')
 router.route('/api/token')
   .post(token.create);
 
-router.route('/to64')
-  .get(imgurController.to64)
-
 /* GET env variables for front-end */
 router.route('/api/imgurKey')
   .get(adminsController.imgurInfo)
@@ -41,11 +38,11 @@ router.route('/api/content')
 /* Imgur API calls */
 router.route('/imgur')
   .get(imgurController.getImages)
-  .put(imgurController.updateImage)
+  .put(imgurController.addImageToAlbum)
+
 router.route('/imgur/upload')
   .post(imgurController.uploadImage)
-router.route('/imgur/album')
-  .put(imgurController.addImageToAlbum)
+
 
 // router.get('*', function (req, res, next) {
 //   res.redirect('/');

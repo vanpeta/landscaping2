@@ -21,11 +21,15 @@ imgurService.$inject = ['$http']
         reader.readAsDataURL(image);
       })
     }
-    function uploadImage (image) {
+    function uploadImage (image, title, description) {
       var promise = $http({
         method: 'POST',
         url: '/imgur/upload',
-        data: {image: image}
+        data: {
+          image: image,
+          title: title,
+          description: description
+          }
       })
       return promise
     }
@@ -39,15 +43,20 @@ imgurService.$inject = ['$http']
       return promise
     };
 
-    function updateImage () {
-
+    function addImageToAlbum (ids) {
+      var promise = $http({
+        method: 'PUT',
+        url: '/imgur',
+        data: {ids: ids}
+      });
+      return promise
     }
 
     return {
       uploadImage: uploadImage,
       getAlbumImages: getAlbumImages,
       convertTo64: convertTo64,
-      updateImage: updateImage
+      addImageToAlbum: addImageToAlbum
     }
   }
 })();
