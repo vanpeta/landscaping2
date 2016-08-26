@@ -231,7 +231,7 @@
         <textarea ng-model='vm.imageForm.description'>Description (optional)</textarea>
         <label>Description (optional)</label>
       </div>
-      <button class="btn admin" ngf-select ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
+      <button class="btn admin" ngf-select ngf-no-object-url="true" ng-model="vm.imageForm.image" name="uploadImage" ngf-pattern="'image/*'"
         ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Select Image</button>
         {{vm.imageForm.image.name}}<br>
       <button class="btn modal-close" type="submit">Submit</button>

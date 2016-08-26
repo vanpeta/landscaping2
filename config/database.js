@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 //Use different database URIs based on whether an env vas exists.
 
 var dbUri = ('mongodb://localhost/' + process.env.LOCAL_DB);
-//process.env.MONGOLAB_URI ||
+// process.env.MONGOLAB_URI ||
 if (!process.env.MONGOLAB_URI) {
   //check that MongoD is running..
   require('net').connect(27017, 'localhost').on('error', function() {
