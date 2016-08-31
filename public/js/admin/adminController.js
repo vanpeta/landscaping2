@@ -56,6 +56,10 @@
         .getAlbumImages()
         .then(function(res){
           vm.images=JSON.parse(res.data).data;
+          vm.images.forEach(function(e){
+            e.link = e.link.replace('http','https');
+          })
+          console.log(vm.images[1].link)
           vm.loading = false
           vm.gallery = true
         })

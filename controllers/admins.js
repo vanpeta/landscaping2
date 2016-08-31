@@ -93,7 +93,11 @@ function create(req, res, next) {
       });
     }).catch(function(err) {
       if (err.message.match(/E11000/)) {
+        console.log(err)
         err.status = 409;
+        res.json({
+          message: "This email is already being used"
+        })
       } else {
         err.status = 422;
       }

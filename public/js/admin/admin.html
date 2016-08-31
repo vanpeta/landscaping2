@@ -16,6 +16,9 @@
             <button type="submit" ng-disabled="signInForm.$invalid" class="btn">Submit</button>
           </div>
         </form>
+        <div ng-show='vm.wrong' class='red-text'>
+          <span>{{vm.wrongMessage}}</span>
+        </div>
       </div>
     </div>
     <div class='row'>
@@ -210,14 +213,6 @@
       </form>
     </div>
   </div>
-  <!--     <div class='about-page-options-subtitle input-field'>
-      </div>
-      <div class='about-page-options-paragraph1 input-field'>
-      </div>
-      <div class='about-page-options-paragraph2 input-field'>
-      </div>
-    </div>
-  </div> -->
 </div>
 <div id='modal-uploadImage' class='modal'>
   <div class='modal-content'>
@@ -267,6 +262,8 @@
         <button type="submit" class="btn waves-effect modal-close">Submit</button>
       </div>
     </form>
+    <div ng-show='vm.conflict'>
+      <<span class='red-text'>{{vm.wrongMessage}}</span>
   </div>
 </div>
 
