@@ -62,7 +62,7 @@
             vm.wrongMessage = "Error: " +err.data
             $log.info('Error:', err);
             vm.login = {};
-            vm.signInForm = $serPristine();
+            vm.signInForm = $setPristine();
             vm.signInForm = $setUntouched();
           }
         );

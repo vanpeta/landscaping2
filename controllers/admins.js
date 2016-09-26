@@ -62,11 +62,13 @@ function sendEmail(req,res,next) {
     //     res.json(res.data)
     //   })
     // })
-    smtpTransport.sendTemplate(email.render(req),function (err) {
+    var sendEmailTemplate = smtpTransport.templateSender(email, {from: process.env.developerEmail});({to: process.env.developerEmail,
+          subject: req.body.name + " sent a new contact message from http://www.sphansonlandscaping.com about: " + req.body.subject},
+    function (err) {
       if(err) next (err);
       res.json(res.data)
+      })
     })
-  })
     .catch(function(err) {
       res.json(res.data)
     })
