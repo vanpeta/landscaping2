@@ -5,9 +5,9 @@
   .module('landscaping')
   .controller('contactController', contactController)
 
-  contactController.$inject=['$http','vcRecaptchaService'];
+  contactController.$inject=['$http','vcRecaptchaService','contactService'];
 
-  function contactController($http, vcRecaptchaService){
+  function contactController($http, vcRecaptchaService, contactService){
     var vm=this;
 
     vm.contactEmail = {}
@@ -25,12 +25,15 @@
     }
 
     function sendEmail () {
-      console.log(vm.contactEmail)
-      $http({
-        method:'POST',
-        url: '/sendemail',
-        data: vm.contactEmail
-      }).then(function(res){
+      contactService.sendEmail(vm.contactEmail)
+
+      // console.log(vm.contactEmail)
+      // $http({
+      //   method:'POST',
+      //   url: '/sendemail',
+      //   data: vm.contactEmail
+      // })
+      .then(function(res){
         console.log(res)
         if (res.status==200) {
           vm.showDisplay = true;

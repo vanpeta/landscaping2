@@ -5,22 +5,6 @@ var xoauth2 = require('xoauth2');
 var https = require('https');
 var rp = require('request-promise');
 
-var generator = require('xoauth2').createXOAuth2Generator({
-  user: process.env.developerEmail,
-  clientId: process.env.Google_OAuth_client_ID,
-  clientSecret: process.env.Google_OAuth_client_secret,
-  refreshToken:process.env.Google_Refresh_Token,
-});
-
-generator.on('token', function(token){
-  console.log('New token for %s: %s', token.user, token.accessToken)
-})
-
-var smtpTransport = nodemailer.createTransport({
-  service: 'gmail',
-  auth:{xoauth2:generator}
-});
-
 module.exports = {
   index: index,
   show: show,
@@ -30,6 +14,25 @@ module.exports = {
   sendEmail:sendEmail,
   me: me
 }
+
+var generator = xoauth2.createXOAuth2Generator({
+  user: process.env.developerEmail,
+  clientId: process.env.Google_OAuth_client_ID,
+  clientSecret: process.env.Google_OAuth_client_secret,
+  refreshToken:process.env.Google_Refresh_Token,
+  accessToken: process.env.Google_accessToken
+});
+
+generator.on('token', function(token){
+  console.log('New token for %s: %s', token.user, token.accessToken)
+})
+
+var smtpTransport = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      xoauth2: generator
+    }
+});
 
 function sendEmail(req,res,next) {
   if(req.body.myRecaptchaResponse === undefined || req.body.myRecaptchaResponse === '' || req.body.myRecaptchaResponse === null) {
@@ -52,11 +55,15 @@ function sendEmail(req,res,next) {
         html: '<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head><body><nav class="navbar navbar-default" style="background-color: #4caf50"><h4 class="text-center" style="color: white">S & P Hanson Landscaping Professional Landscape Services</h4></nav><div class="container"><div class="row"><div class="col-xs-12 col-lg-12"><h5 class="text-center" style="background-color: #cfd8dc">'+req.body.name+' sent:</h5><div class="col-s-12 col-m-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><p>'+req.body.message+'</p><h6 class="text-center">Reply at:</h6><p>'+req.body.email+'</p></div></div></div></div><nav class="navbar navbar-fixed-bottom" style="background-color: #4caf50; padding: 0 0 40px 0"><a target="_blank" href="http://vanpeta.github.io/carlos/" class="nav navbar-nav navbar-right" style="color: white">Built by vanpeta productions</a></nav></body>'
         // text: "Respond to " + req.body.name + " at: " + req.body.email + "-----" + req.body.name + " said: " + req.body.message
       }
-      smtpTransport.sendMail(mailOptions, function(err) {
-        if (err) next(err);
-        res.json(res.data)
-      })
+      smtpTransport.sendMail(mailOptions, function(err, res) {
+        if (err) {
+          console.log(err);
+      } else {
+          console.log(res);
+      }
+      smtpTransport.close();
     })
+  })
     .catch(function(err) {
       res.json(res.data)
     })
