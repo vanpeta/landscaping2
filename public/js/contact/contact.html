@@ -20,8 +20,8 @@
       <textarea ng-model='vm.contactEmail.message' type="text" name="message" required id="message" class='validate contact-textarea'></textarea>
       <label for="email">Your Message (required)</label>
     </div>
-    <!--6LcbkSYTAAAAAHsZU-58tHa4O9a_troAyklKFNws  WORKING SITE KEY -->
-    <div vc-recaptcha  ng-model='vm.contactEmail.myRecaptchaResponse' key="'6LdwUyYTAAAAANqfE4ul4vMG93_OGscUsUickQEF'" on-success='vm.captchaSuccess(response)'></div>
+    <!--  6LdwUyYTAAAAANqfE4ul4vMG93_OGscUsUickQEF DEVELOPING SITE KEY -->
+    <div vc-recaptcha  ng-model='vm.contactEmail.myRecaptchaResponse' key="'6LcbkSYTAAAAAHsZU-58tHa4O9a_troAyklKFNws'" on-success='vm.captchaSuccess(response)'></div>
     <div class='center-align'>
       <p class='red-text' ng-show='vm.showDisplay'>{{vm.display}}</p>
       <button ng-show='vm.showbutton' class='btn contact-btn' type='submit'>Send</button>
