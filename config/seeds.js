@@ -3,8 +3,10 @@ var mongoose = require('./database');
 var Admin = require('../models/admin');
 var Content = require('../models/content');
 
-var admins = [{admin_name: 'Testing Admin',
-              email: 'test@email.com'}];
+var admins = [
+// {admin_name: 'Testing Admin',
+//               email: 'test@email.com'}
+              ];
 
 Admin.remove({}, function (err) {
   if (err) console.log(err);
@@ -12,7 +14,9 @@ Admin.remove({}, function (err) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Database seeded with " + admins.length + " admins.");
+      console.log("Database seeded with " +
+        //admins.length +
+        " admins.");
       mongoose.connection.close();
     }
     process.exit();

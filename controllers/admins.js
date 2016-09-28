@@ -1,13 +1,9 @@
 var Admin = require('../models/admin');
 require('dotenv').load();
 var nodemailer = require('nodemailer');
-var xoauth2 = require('xoauth2');
 var https = require('https');
 var rp = require('request-promise');
-var path = require('path')
-var EmailTemplate = require('email-templates').EmailTemplate
-var templateDir = path.join(__dirname, 'templates', 'email')
-var email = new EmailTemplate(templateDir)
+
 
 module.exports = {
   index: index,
@@ -19,22 +15,9 @@ module.exports = {
   me: me
 }
 
-// var generator = xoauth2.createXOAuth2Generator({
-//   user: process.env.developerEmail,
-//   clientId: process.env.Google_OAuth_client_ID,
-//   clientSecret: process.env.Google_OAuth_client_secret,
-//   refreshToken:process.env.Google_Refresh_Token,
-//   accessToken: process.env.Google_accessToken
-// });
-
-// generator.on('token', function(token){
-//   console.log('New token for %s: %s', token.user, token.accessToken)
-// })
-
 var smtpTransport = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-      //xoauth2: generator
       user: process.env.developerEmail,
       pass: process.env.emailPass
     }
