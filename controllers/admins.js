@@ -15,22 +15,24 @@ module.exports = {
   me: me
 }
 
-var generator = xoauth2.createXOAuth2Generator({
-  user: process.env.developerEmail,
-  clientId: process.env.Google_OAuth_client_ID,
-  clientSecret: process.env.Google_OAuth_client_secret,
-  refreshToken:process.env.Google_Refresh_Token,
-  accessToken: process.env.Google_accessToken
-});
+// var generator = xoauth2.createXOAuth2Generator({
+//   user: process.env.developerEmail,
+//   clientId: process.env.Google_OAuth_client_ID,
+//   clientSecret: process.env.Google_OAuth_client_secret,
+//   refreshToken:process.env.Google_Refresh_Token,
+//   accessToken: process.env.Google_accessToken
+// });
 
-generator.on('token', function(token){
-  console.log('New token for %s: %s', token.user, token.accessToken)
-})
+// generator.on('token', function(token){
+//   console.log('New token for %s: %s', token.user, token.accessToken)
+// })
 
 var smtpTransport = nodemailer.createTransport({
-  service: 'gmail',
+  service: 'Gmail',
   auth: {
-      xoauth2: generator
+      //xoauth2: generator
+      user: process.env.developerEmail,
+      pass: process.env.emailPass
     }
 });
 
